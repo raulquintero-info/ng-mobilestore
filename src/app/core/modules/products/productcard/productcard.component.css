@@ -1,0 +1,17 @@
+.card-over:hover{
+  background-color: #f8f5ee;
+  cursor: pointer;
+  /* border: 1px solid red; */
+  color: green;
+  font-weight: bold;
+  box-shadow: 0px 2px 6px red;
+
+}
+.card-text{
+  font-weight: bold;
+}
+
+.card{
+  flex-direction: column;
+  border: none;
+}

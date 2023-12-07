@@ -1,34 +1,42 @@
-<div class="container-fluid">
-
-  <div class="row header bg-primary ">
+<div *ngIf="userData.rol.name != 'admin'" class="container-fluid" style="border-bottom: 2px groove #ab7777">
+  <div class="row header  ">
     <div class="col mt-4">
       <div class="ms-3 ">
         <h3 routerLink="/inicio">MobileStore</h3>
       </div>
     </div>
-    <div class="col col mt-4 text-end  ">
-      <!-- {{ userLogged?.isLogged }}-  {{ userLogged?.rol?.name }} -->
-      <button *ngIf="!userLoginOn" routerLink="/login" class="btn btn-outline-light me-2">login</button>
-      <!-- <button *ngIf="userLoginOn" (click)="logout()" class="btn btn-outline-light ms-2 me-2">{{ userData.username }}&nbsp;<i class="bi bi-box-arrow-right"></i></button> -->
-
-        <button *ngIf="userLoginOn" class="btn  btn-outline-light me-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          {{ userData.username }}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Salir</a></li>
-        </ul>
-
-      <button *ngIf="true"  routerLink="/carrito"   class="btn btn-outline-light position-relative me-3" >
-        Mi <i class="bi bi-cart4"></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          {{ 0 }}
-        </span>
-      </button>
+    <div class="col col mt-4 text-end  ">{{ favoriteProducts.length }}
+      <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none"
+        [routerLink]="'/mis-favoritos'">
+        <i *ngIf="!favoriteProducts.length" class="bi bi-heart me-3"></i>
+        <i *ngIf="favoriteProducts.length" class="bi bi-heart-fill me-3"></i>
+      </a>
+      <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none" href="/mi-carrito"><i
+          class="bi bi-cart4 "></i>
+        <span *ngIf="cart.items.length" class="cart-count">&nbsp;{{ cart.items.length }}&nbsp;&nbsp;</span>
+        <span class="me-2" style="font-size:11px; left: -1px; position:relative">{{ cart.total | currency }}</span></a>
+      <a *ngIf="userLoginOn" style="color:white; text-decoration:none; cursor: pointer; " (click)="logout()"><i
+          class="bi bi-door-closed me-5"></i></a>
     </div>
-
   </div>
-
 </div>
 
+<div *ngIf="userData.rol.name == 'admin'" class="container-fluid" style="border-bottom: 2px groove #ab7777">
+  <div class="row header-admin  ">
+    <div class="col ">
+      <div class="ms-3 ">
+        <h5>MobileStore</h5>
+      </div>
+    </div>
+    <div class="col col text-end  ">
+      <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none"
+        [routerLink]="'/mis-favoritos'">
+        <i *ngIf="!favoriteProducts.length" class="bi bi-heart me-3"></i>
+        <i *ngIf="favoriteProducts.length" class="bi bi-heart-fill me-3"></i>
+      </a>
+      {{ userData.username }}
+      <a class="ms-3" *ngIf="userLoginOn" style="color:white; text-decoration:none; cursor: pointer; " (click)="logout()"><i
+          class="bi bi-door-closed me-5"></i></a>
+    </div>
+  </div>
+</div>

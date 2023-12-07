@@ -1,0 +1,18 @@
+.vertical-text {
+  /* position: absolute; */
+  /* margin-bottom: 7px; */
+  /* margin-left: 0; */
+  /* padding-right: 5px; */
+  /* transform-origin: 0 0; */
+  transform: rotate(-180deg);
+  writing-mode: vertical-lr;
+}
+.box {
+  background-color: #e8e8e8;
+    color: #959595;
+  text-align:right;
+  padding: 0px;
+  margin: 0px;
+  /* display: inline-block; */
+  /* vertical-align: middle; */
+}

@@ -37,7 +37,8 @@ export class LoginComponent {
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           console.log(userData);
-
+          if(userData.rol.name == 'admin') this.router.navigateByUrl('/dashboard');
+            else this.router.navigateByUrl('/');
         },
         error: error => {
           console.log(error);
@@ -46,7 +47,7 @@ export class LoginComponent {
         },
         complete: ()=>{
           console.log('login completo');
-          this.router.navigateByUrl('/');
+
           this.loginForm.reset();
         }
       });

@@ -1,0 +1,30 @@
+<div class="row row-item  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
+  <div class="col-lg-3"><img [src]="item.image" width="120" alt=""></div>
+  <div class="col-lg-3">{{ item.brand?.brandname | uppercase }}<br>{{ item.name | titlecase }}<br>
+
+  </div>
+  <div class="col-lg-3">
+    <span *ngIf="!item.isOffer" class="price"> {{ item.price | currency }}</span>
+    <div *ngIf="item.isOffer"><span style="text-decoration:line-through; color: gray;"> MX{{ item.price
+        |currency}}</span> <span class="ms-2 badge bg-danger text-light">PROM</span><br>
+      <span style="font-weight: bold; font-size: 1.5rem; color: red"> MX{{ item.offerPrice |currency}}</span>
+    </div>
+
+  </div>
+  <div class="col-lg-3">
+    <span *ngIf="!item.isOffer" class="price"> {{ (item!.price! * item!.quantity!) | currency }}</span>
+    <span *ngIf="item.isOffer" class="price"> {{ (item!.offerPrice! * item!.quantity!) | currency }}</span>
+    <div class="btn-group mt-3" role="group" aria-label="Basic example">
+
+      <button class="btn btn-warning rounded-left" [disabled]="item.quantity == 1" (click)="removeItem(i)"><i
+          class="bi bi-dash-circle"></i></button>
+      <input type="text" readonly value="{{item.quantity}}" style="width: 50px; text-align: center;
+              background-color: #ffc107 ;
+              color: black;
+              border: 0px;
+            ">
+      <button class="btn  btn-warning rounded-right" (click)="addItem(i)"><i class="bi bi-plus-circle"></i> </button>
+    </div><br>
+    <button (click)="remove(i)" class="btn btn-sm btn-link">Eliminar</button>
+  </div>
+</div>

@@ -1,9 +1,9 @@
-export interface LoginResponse {
+export interface User {
   id:       number;
   username: string;
   token:    string;
   rol:      Rol;
-  name:     null;
+  name:     string;
 }
 
 export interface Rol {

@@ -1,0 +1,24 @@
+.price{
+  text-align: right;
+  color:brown;
+  font-size: 1.5rem;
+}
+.envio{
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
+}
+.row-item{
+  background-color: #f7f7f7;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.rounded-left{
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  height: 35px;
+}
+.rounded-right{
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 35px;
+}

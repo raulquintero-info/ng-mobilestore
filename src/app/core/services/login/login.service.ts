@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
-import { LoginResponse } from './loginResponse.interface';
+import { User } from './User.interface';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,20 @@ import { LoginResponse } from './loginResponse.interface';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean> (false);
-  currentUserData: BehaviorSubject<LoginResponse> = new BehaviorSubject<LoginResponse>({} as LoginResponse);
+  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({username: "no user", rol:{ id: 0, name: "no rol"}} as User);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router,private cookies: CookieService) { }
 
-  login(credentials: LoginRequest): Observable<LoginResponse>{
+  login(credentials: LoginRequest): Observable<User>{
     console.log(credentials)
-    return this.http.post<LoginResponse>('http://localhost:8080/auth/login', credentials).pipe(
-      tap( (userData: LoginResponse) => {
+    return this.http.post<User>('http://localhost:8080/auth/login', credentials).pipe(
+      tap( (userData: User) => {
+        console.log('User: ', userData);
         this.currentUserData.next(userData);
         this.currentUserLoginOn.next(true);
+        sessionStorage.setItem('token', userData.token ? userData.token : '');
+        sessionStorage.setItem('user',JSON.stringify(userData));
+        sessionStorage.setItem('userLoginOn', JSON.stringify(true))
       }),
       catchError(this.handleError)
     );
@@ -39,14 +45,45 @@ export class LoginService {
     return  throwError(()=> new Error( message));
   }
 
-  // get userData(): Observable<LoginResponse>{
-  //  return this.currentUserData.asObservable();
+  get userData(): Observable<User>{
+   return this.currentUserData.asObservable();
+  }
+
+  get userLoginOn(): Observable<boolean>{
+    return this.currentUserLoginOn.asObservable();
+  }
+
+  // setUserData(userLogged: User){
+  //   console.log(userLogged);
+  //   this.currentUserData.next(userLogged);
+  //   this.currentUserLoginOn.next(false);
   // }
 
-  // get userLoginOn(): Observable<boolean>{
-  //   return this.currentUserLoginOn.asObservable();
-  // }
 
+  checkStatus(){
+    let currentUser: any;
+    let currentUserLoginOn: any;
+    let userLogged: User;
+    currentUser = sessionStorage.getItem('user')
+    if(currentUser){
+      userLogged = JSON.parse(currentUser);
+      this.currentUserData.next(userLogged);
+    }
+    currentUserLoginOn = sessionStorage.getItem('userLoginOn')
+    if(currentUserLoginOn){
+      currentUserLoginOn = JSON.parse(currentUserLoginOn);
+      this.currentUserLoginOn.next(currentUserLoginOn);
+    }
+  }
+
+  logout(){
+    this.currentUserData.next({id:0, rol:{id:0, name:''}} as User);
+    this.currentUserLoginOn.next(false);
+    sessionStorage.clear();
+    // await new Promise(f => setTimeout(f, 10000));
+    this.router.navigateByUrl('/');
+
+  }
 
 
 }
