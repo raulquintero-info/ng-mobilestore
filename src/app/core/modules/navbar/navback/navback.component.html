@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+<nav class="navbar navbar-expand-lg navbar-light bgnav">
   <div class="container-fluid">
     <a class="navbar-brand" href="/dashboard">Dashboard</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,17 +33,17 @@
               </ul>
             </li>
 
-            <li><a href="/admin/productos/pg/0" class="dropdown-item">Productos &raquo;</a>
+            <li><a href="/admin/productos" class="dropdown-item">Productos &raquo;</a>
               <ul class="dropdown-menu submenu">
                 <li><a href="/admin/productos/altas" class="dropdown-item">Altas</a></li>
                 <li><a href="/admin/productos/buscar" class="dropdown-item">Buscar/Editar</a></li>
-                <li><a href="/admin/productos/pg/0" class="dropdown-item">Ver Todos</a></li>
+                <li><a href="/admin/productos" class="dropdown-item">Ver Todos</a></li>
               </ul>
             </li>
           </ul>
 
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Reportes
@@ -53,7 +53,7 @@
             <a class="dropdown-item" href="/admin/inventarios">Inventario</a>
             <a class="dropdown-item" href="x">Something else here</a>
           </div>
-        </li>
+        </li> -->
 
 
         <li class="nav-item dropdown">
@@ -62,12 +62,13 @@
             Ordenes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/ordenes/procesadas">Procesadas</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes/sin-procesar">Sin Procesar</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
             <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/ordenes/canceladas">Canceladas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes/nuevas">Nuevas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes/procesadas">Procesadas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes/enviadas">Enviadas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes/entregadas">Entregadas</a></li>
           </ul>
         </li>
 

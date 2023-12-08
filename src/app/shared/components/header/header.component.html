@@ -5,8 +5,9 @@
         <h3 routerLink="/inicio">MobileStore</h3>
       </div>
     </div>
-    <div class="col col mt-4 text-end  ">{{ favoriteProducts.length }}
-      <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none"
+    <div class="col col mt-4 text-end  ">
+      <!-- {{ favoriteProducts.length }} -->
+      <a *ngIf="userData.rol.name!='admin' && userLoginOn" class="" style="color:white; text-decoration:none"
         [routerLink]="'/mis-favoritos'">
         <i *ngIf="!favoriteProducts.length" class="bi bi-heart me-3"></i>
         <i *ngIf="favoriteProducts.length" class="bi bi-heart-fill me-3"></i>

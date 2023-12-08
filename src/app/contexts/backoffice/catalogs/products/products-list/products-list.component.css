@@ -1,0 +1,7 @@
+.offer-price{
+  color:red;
+}
+.old-price{
+  font-size: .85rem;
+  text-decoration: line-through;
+}

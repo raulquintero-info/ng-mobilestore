@@ -1,0 +1,24 @@
+<div class="container ">
+
+  <div class="row mb-4">
+
+    <h3>Detalles de la compra del 12/03/2023 <span style="font-weight:lighter">( {{ cart.items.length }} artículos)</span></h3>
+  </div>
+  <div class="d-grid gap-2 mt-2 mb-3"><button class="btn btn-success" [routerLink]="['/mis-compras']"
+    routerLinkActive="router-link-active">Ver Todas las Ordenes</button></div>
+  <div class="row mt-5 ms-3">
+    <div class="col-lg-8">
+
+
+      <app-purchase-item [item]="item" [i]="i" *ngFor="let item of cart.items; let i = index"></app-purchase-item>
+
+
+    </div>
+    <div class="col-lg-4 ">
+
+      <!-- <app-purchase-total [cart]="cart" ></app-purchase-total> -->
+
+
+    </div>
+  </div>
+</div>

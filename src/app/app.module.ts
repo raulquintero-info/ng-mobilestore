@@ -13,6 +13,8 @@ import { LogoutComponent } from './shared/pages/logout/logout.component';
 import { NotfoundComponent } from './shared/pages/notfound/notfound.component';
 import { RouterModule } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
+import { BackofficeModule } from './contexts/backoffice/backoffice.module';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { CookieService } from "ngx-cookie-service";
     HttpClientModule,
     NavbarModule,
     FrontofficeModule,
+    BackofficeModule,
     AuthModule,
     RouterModule
   ],

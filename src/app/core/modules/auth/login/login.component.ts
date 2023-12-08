@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login/login.service';
 import { LoginRequest } from 'src/app/core/services/login/loginRequest.interface';
+import { FavoritesService } from 'src/app/core/services/models/favorites.service';
 
 
 @Component({
@@ -20,7 +21,11 @@ export class LoginComponent {
     password:['',Validators.required]
 ,  })
 
-  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService){
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService,
+    private favoritesService: FavoritesService){
 
   }
 
@@ -38,7 +43,7 @@ export class LoginComponent {
         next: (userData) => {
           console.log(userData);
           if(userData.rol.name == 'admin') this.router.navigateByUrl('/dashboard');
-            else this.router.navigateByUrl('/');
+          else this.router.navigateByUrl('/');
         },
         error: error => {
           console.log(error);

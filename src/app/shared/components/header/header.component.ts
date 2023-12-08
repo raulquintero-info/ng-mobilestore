@@ -51,8 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     this.cartService.Cart.subscribe({next:(cart)=>{console.log('header-cart', cart);this.cart = cart;}})
     this.cartService.checkCartItems();
-
-    // this.favoriteProducts = this.favoritesService.getAll(this.userData.id);
+    this.favoritesService.getAll();
 
 
   }

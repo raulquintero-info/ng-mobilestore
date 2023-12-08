@@ -5,5 +5,6 @@ export interface Cart{
   items: Array<Product>,
   total: number,
   totalAbs: number,
+  pickup: number,
 
 }

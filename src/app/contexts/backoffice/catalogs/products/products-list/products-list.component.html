@@ -1,0 +1,100 @@
+
+
+<div class="container mb-5">
+
+  <div class="row ms-3 mt-5 mb-4">
+
+    <h3>Productos</h3>
+    <hr>
+
+  </div>
+  <div class="d-flex justify-content-between ms-4">
+      <div>
+        <select class="form-select" [(ngModel)]="categoryId" (change)="selectCategory()" aria-label="Default select example">
+          <option value="0" selected>Todas las Categorias</option>
+          <option *ngFor="let c of categories" value="{{ c.id }}">{{ c.name }}</option>
+
+        </select>
+      </div>
+      <div>
+        <button class="btn btn-success me-2" (click)="gotoAltas()"><i class="bi bi-plus-circle"></i> Altas</button>
+      </div>
+    <div class="me-2">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.previousPage)"
+              [disabled]="navigation.first">Anterior</button></li>
+          <li class="page-item" [ngClass]="actualPage==actualPage ? 'active': '' " aria-current="page"><button
+              class="page-link">{{(this.navigation.actualPage )}}</button></li>
+          <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.nextPage)"
+              [disabled]="navigation.last">Siguiente</button></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+  <div class="row mt-1 ms-3">
+
+
+    <div class="table-responsive">
+
+      <table id='table' datatable class="table table-light  table-striped">
+        <thead>
+          <tr>
+            <th class="table-dark">id</th>
+
+            <th class="table-dark">Imagen</th>
+            <th class="table-dark">Modelo</th>
+            <th class="table-dark">Marca</th>
+            <th class="table-dark">Precio</th>
+            <th class="table-dark">En Oferta</th>
+            <th class="table-dark">Cant.</th>
+            <th class="table-dark">Categoria</th>
+            <th class="table-dark">Opciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let c of products">
+            <th>{{ c.id }}</th>
+            <td><img src="{{ c.image }}" width="50" alt="" class="img-thumbnail rounded mx-autio d-block"></td>
+            <td>{{ c.name | titlecase}}</td>
+            <td>{{ c.brand?.brandname| titlecase}}</td>
+            <td><span [ngClass]="c.isOffer ? 'old-price' : 'current-price' ">{{ c.price | currency}}</span> <br> <span
+                *ngIf="c.isOffer" class="offer-price">{{ c.offerPrice | currency}}</span> </td>
+            <td><span *ngIf="c.isOffer" class="badge bg-danger">En Oferta</span></td>
+            <td>{{ c.quantity }}</td>
+            <td>{{ c.category?.name}}</td>
+            <td style="text-align:center">
+              <div class="btn-group">
+
+                <button class="btn btn-warning" (click)="gotoEdit(c.id)"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-danger" (click)="delete(c.id)"><i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <caption class="ps-3">del {{ navigation.start }} al {{navigation.end}} de {{ navigation.totalElements}}
+          registros</caption>
+      </table>
+
+
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.previousPage)"
+            [disabled]="navigation.first">Anterior</button></li>
+        <li class="page-item" [ngClass]="actualPage==actualPage ? 'active': '' " aria-current="page"><button
+            class="page-link">{{(navigation.actualPage )}}</button></li>
+        <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.nextPage)"
+            [disabled]="navigation.last">Siguiente</button></li>
+      </ul>
+    </nav>
+    <div>
+
+
+
+    </div>
+
+  </div>
+</div>

@@ -9,19 +9,19 @@ import { CartService } from 'src/app/core/services/models/cart.service';
 })
 export class CartComponent implements OnInit {
   cart: Cart = {} as Cart;
+  textBtn = "Continuar";
+
+  constructor(private cartService: CartService) { }
 
 
-  constructor(private cartService: CartService){}
-
-
-  ngOnInit(){
+  ngOnInit() {
     this.cartService.Cart.subscribe({
-    next:(cart)=>{
-      console.log('header-cart', cart);
-      this.cart = cart;
-    }
-  })
-  this.cartService.checkCartItems();
+      next: (cart) => {
+        console.log('header-cart', cart);
+        this.cart = cart;
+      }
+    })
+    this.cartService.checkCartItems();
 
 
 

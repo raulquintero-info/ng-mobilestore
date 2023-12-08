@@ -16,6 +16,7 @@ export class FavoriteSocialBarComponent {
   favoriteClass: string = "btn-outline-danger";
   userData: User = {} as User;
   favoriteProducts: Product[] = [];
+  userLoginOn: boolean =false;
 
   constructor(
     private productService: ProductService,
@@ -27,6 +28,12 @@ export class FavoriteSocialBarComponent {
     this.loginService.currentUserData.subscribe({
       next:(userData)=>{
         this.userData = userData
+      }
+    });
+
+    this.loginService.currentUserLoginOn.subscribe({
+      next: (userLoginOn) => {
+        this.userLoginOn = userLoginOn;
       }
     });
 

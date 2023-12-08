@@ -34,8 +34,7 @@ export class ProductcardComponent implements OnInit {
   }
 
   showProduct(id: number){
-    this.router.navigate(
-      ['/producto/' + id]);
+    this.router.navigate(['/producto/' + id]);
   }
 
   favoriteAction(productId: number ){

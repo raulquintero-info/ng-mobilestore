@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  navbar-dark " style="background-color:#e5e1e1">
   <div class="container-fluid col-sm-10 offset-lg-1  " style="border-radius: 30px;  background-color: #f1403f">
-    <a class="navbar-brand" routerLink="/productos/en-oferta">{{ titleBar }}<i class="bi bi-caret-right-fill"></i></a>
+    <a class="navbar-brand" routerLink="/productos/en-oferta">{{ titleBar }}<i class="bi bi-caret-left-fill"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
             {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
+            <!-- <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person-fill"></i> Mi Perfil</a></li> -->
             <li><a class="dropdown-item" routerLink="/mis-favoritos"><i class="bi bi-heart"></i> Favoritos</a></li>
             <li><a class="dropdown-item" routerLink="/mis-compras"><i class="bi bi-bag-check-fill"></i> Mis Compras</a></li>
             <li><a class="dropdown-item" routerLink="/mi-carrito"><i class="bi bi-cart4"></i> Mi Carrito</a></li>

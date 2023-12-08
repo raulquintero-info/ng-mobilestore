@@ -16,10 +16,12 @@ constructor(private http: HttpClient) { }
 
 getAll(page: number = 1):Observable<any>{ return this.http.get(this.urlBase + '-nuevos'); }
 getByCategoryId(id: number = 1, userId: number = 0):Observable<any>{console.log('categoryId',id); console.log(this.urlBase + '/categoria/' + id);
-  return this.http.get(this.urlBase + '/categoria/' + id + '/usuario/' + userId); }
+return this.http.get(this.urlBase + '/categoria/' + id + '/usuario/' + userId); }
 getAllOffers(page: number = 1):Observable<any>{ return this.http.get(this.urlBase + '-oferta'); }
 getById(id: number = 0):Observable<any>{ return this.http.get(this.urlBase + '/' + id); }
 deleteById(id: number = 0):Observable<any>{ return this.http.delete(this.urlBase + '/' + id); }
+
+getAllCatalog(page: number = 1):Observable<any>{ return this.http.get(this.urlBase + '/page' + '/' + page); }
 
 
 getIsFavoriteByUserId(productId: number = 0, userId: number = 0):Observable<any>{

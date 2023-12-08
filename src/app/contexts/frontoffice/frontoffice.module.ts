@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { ProductsModule } from 'src/app/core/modules/products/products.module';
@@ -13,6 +14,10 @@ import { MyFavoritesComponent } from './favorites/my-favorites/my-favorites.comp
 import { RouterModule } from '@angular/router';
 import { FavoritesModule } from 'src/app/core/modules/favorites/favorites.module';
 import { MyPurchasesComponent } from './purchases/my-purchases/my-purchases.component';
+import { ShippingTypeComponent } from './checkout/shipping-type/shipping-type.component';
+import { PurchaseComponent } from './purchases/purchase/purchase.component';
+import { PurchasesModule } from 'src/app/core/modules/purchases/purchases.module';
+import { OrderResumeComponent } from './checkout/order-resume/order-resume.component';
 
 
 
@@ -25,6 +30,9 @@ import { MyPurchasesComponent } from './purchases/my-purchases/my-purchases.comp
     CartComponent,
     MyFavoritesComponent,
     MyPurchasesComponent,
+    ShippingTypeComponent,
+    PurchaseComponent,
+    OrderResumeComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,8 @@ import { MyPurchasesComponent } from './purchases/my-purchases/my-purchases.comp
     ProductsModule,
     CheckoutModule,
     FavoritesModule,
+    FormsModule,
+    PurchasesModule
   ]
 })
 export class FrontofficeModule { }

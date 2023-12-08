@@ -1,0 +1,63 @@
+<div class="container ">
+
+  <div class="row mb-4">
+
+    <h3>Tipo de Envio </h3>
+  </div>
+  <div class="row mt-5 ms-3">
+    <div class="col-lg-8">
+      <div class="row row-item  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
+        <div class="col">
+          <h4>Seleccione tipo de envio</h4>
+          <hr>
+
+          <div class="d-flex justify-content-between">
+
+            <div class="p-2">
+              <label class="form-check-label" for="flexRadioDefault1">
+                A mi domicilio ($0.00)
+                <div class="address ms-2">Av. La Joya 2291, Col. Revolucion, 21394<br> Mexicali, Mexico</div>
+              </label>
+            </div>
+            <div class="p-2">
+              <input class="form-check-input border-check" type="radio" [checked]="cart.pickup==1" (change)="setPickup(1)" name="flexRadioDefault" id="flexRadioDefault1">
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <div class="p-2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Recoger en tienda ($0.00)
+              </label>
+            </div>
+            <div class="p-2">
+              <input class="form-check-input border-check" type="radio" [checked]="cart.pickup==2" (change)="setPickup(2)" name="flexRadioDefault" id="flexRadioDefault2">
+            </div>
+          </div>
+          <hr>
+          <div>
+            <button class="btn btn-warning" [routerLink]="['/mi-carrito']"><i class="bi bi-chevron-left"></i> Regresar</button>
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="col-lg-4 ">
+
+      <app-cart-total-to-finish [cart]="cart"></app-cart-total-to-finish>
+
+
+    </div>
+
+  </div>
+
+
+</div>

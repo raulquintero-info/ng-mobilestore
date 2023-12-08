@@ -9,10 +9,10 @@ import { Product } from 'src/app/core/interfaces/product.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-  urlBase = "http://localhost:8080/api/categorias";
+  urlBase = "http://localhost:8080/api/checkout";
 
   item: Product = { id: 0, price: 0, isOffer: false, offerPrice: 0};
-  cartitems: Cart = { items: [], total: 0, totalAbs: 0 };
+  cartitems: Cart = { items: [], total: 0, totalAbs: 0, pickup: 0};
   private cart: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.cartitems);
 
   constructor(private http: HttpClient) {
@@ -109,6 +109,7 @@ export class CartService {
 
 
 
+  sendOrder(): Observable<any> { return this.http.post(this.urlBase, this.cart); }
 
 
 

@@ -1,0 +1,47 @@
+<div class="container ">
+
+  <div class="row mb-4">
+
+    <h3>Gracias por su compra </h3>
+  </div>
+  <div class="row mt-5 ms-3">
+
+    <div class="table-responsive">
+
+      <table id='table' datatable class="table table-light  table-striped">
+        <thead>
+          <tr>
+
+            <th class="table-dark">Fecha</th>
+            <th class="table-dark">Total</th>
+            <th class="table-dark">Tipo De Envio</th>
+            <th class="table-dark">Fecha de Entrega</th>
+            <th class="table-dark">Status</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let p of purchases">
+            <td>{{p.date | date}}</td>
+            <td>{{ p.total | currency }}</td>
+            <td>{{ p.shippingType.shippingType| titlecase}}</td>
+            <td>{{ p.deliveryDate | date}}</td>
+            <td>{{ 'procesando'| titlecase}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+    <div>
+
+
+<div class="text-center mt-3">
+
+  <button class="btn btn-primary" routerLink="/mis-compras/1">Ver detalles de su compra</button>
+</div>
+
+
+
+  </div>
+</div>

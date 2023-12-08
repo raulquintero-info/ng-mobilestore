@@ -24,7 +24,14 @@ export class ProductsOnOfferComponent {
     console.log('paramas.id', this.params.params.id);
 
 
-    this.productService.getAllOffers(page).subscribe({ next: products => { this.products = products.content; } });
+    this.productService.getAllOffers(page).subscribe({
+      next: products => {
+        this.products = products.content;
+      },
+      error: response =>{
+        alert('Algo anda mal, intentelo mas tarde');
+      }
+    });
 
   }
 }

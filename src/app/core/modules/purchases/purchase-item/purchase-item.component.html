@@ -1,0 +1,25 @@
+<div class="row row-item  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
+  <div class="col-lg-2"><img [src]="item.image" width="120" alt=""></div>
+  <div class="col-lg-6">{{ item.brand?.brandname | uppercase }}<br>{{ item.name | titlecase }}<br>
+
+  </div>
+  <!-- <div class="col-lg-3">
+    <span *ngIf="!item.isOffer" class="price"> {{ item.price | currency }}</span>
+    <div *ngIf="item.isOffer"><span style="text-decoration:line-through; color: gray;"> MX{{ item.price
+        |currency}}</span> <span class="ms-2 badge bg-danger text-light">PROM</span><br>
+      <span style="font-weight: bold; font-size: 1.5rem; color: red"> MX{{ item.offerPrice |currency}}</span>
+    </div>
+
+  </div> -->
+  <div class="col-lg-3">
+    Precio<br>
+    <span *ngIf="!item.isOffer" class="price"> {{ (item!.price) | currency }}</span>
+    <span *ngIf="item.isOffer" class="price"> {{ (item!.offerPrice) | currency }}</span><br>
+    <button class="btn btn-primary btn-sm" [routerLink]="['/producto',item.id]">Comprar otra vez</button>
+    </div>
+    <div class="col-lg-1 text-left" role="group">
+      Cant<br>
+      {{item.quantity}}
+    </div><br>
+  </div>
+

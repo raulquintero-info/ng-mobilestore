@@ -1,0 +1,30 @@
+<div class="pt-3 mt-1 pb-3 ps-3 pe-3"
+  style="border:1px solid #d1cccc;  border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+  Procesando <span class="procesing-status">●</span>
+  <hr>
+  <h5 class="mb-4">Total de la compra</h5>
+  <div class="free">
+    <span class="subtotal">Sub Total </span>
+    <span class="cantidad-detalle">{{ cart.total | currency }}</span>
+  </div>
+  <div class="free">
+    <span class="tipo-envio"><span style="font-size: .8rem">TipoEnvio:</span><br>Enviar a Domicilio</span>
+    <span class="cantidad-detalle"> $ 0.00</span>
+  </div>
+  <div class="free" style="border-top:1px solid black">
+    <span class="subtotal">Total</span>
+    <span class="total">{{ cart.total | currency }}</span>
+  </div>
+  <hr>
+  Fecha de entrega: 15/02/2023
+  <hr>
+  Av La joya 2291,<br>
+  Col Revolucion, 21394,<br>
+  Mexicali, Mexico
+  <!-- <div *ngIf=" (cart.totalAbs != cart.total)" class="free mt-2">
+    <span class="cantidad-ahorro">Usted Ahorra</span>
+    <span class="cantidad-ahorro"> {{ (cart.totalAbs - cart.total) | currency }}</span>
+  </div> -->
+  <div class="d-grid gap-2 mt-3 mb-3"><button class="btn btn-success" [routerLink]="['/mis-compras']" routerLinkActive="router-link-active"
+      style="border-radius: 25px;">Ver Todas las Ordenes</button></div>
+</div>

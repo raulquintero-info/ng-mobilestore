@@ -18,7 +18,7 @@ export class CategoryService {
 
   setCurrentCategory(id: number) { console.log(id); this.currentCategoryId.next(id); }
 
-  getAll(page: number = 0): Observable<any> { return this.http.get(this.urlBase); }
+  getAll(page: number = 0): Observable<any> { return this.http.get(this.urlBase ); }
   getAllActive(page: number = 0): Observable<any> { return this.http.get(this.urlBase); }
   getById(id: number = 0): Observable<any> { return this.http.get(this.urlBase + '/' + id); }
 
