@@ -1,0 +1,39 @@
+
+<div class="container  mt-3">
+
+  <div class="row ms-3 mb-4">
+
+    <h3>Marcas</h3>
+    <hr>
+  </div>
+
+  <div class="ms-3">
+    <!-- <button class="btn btn-warning" [routerLink]="['/admin/marcas/altas']" routerLinkActive="router-link-active"   ><i class="bi bi-plus-circle"></i> Altas</button> -->
+    <button class="btn btn-warning"  (click)="gotoAltas()" ><i class="bi bi-plus-circle"></i> Nuevo</button>
+  </div>
+  <div class="row mt-3 ms-3">
+
+<table class="table table-light  table-striped">
+<thead  class="">
+  <tr>
+    <th class="table-dark">id</th>
+    <th class="table-dark">Brand</th>
+    <th class="table-dark">Opciones</th>
+  </tr>
+</thead>
+<tbody class="">
+  <tr *ngFor="let brand of brands"><th>{{ brand.id}}</th><td>{{ brand.brandname | titlecase}}</td>
+    <td>
+      <div class="btn-group">
+        <button class="btn btn-warning" (click)="edit(brand.id)"><i class="bi bi-pencil-square"></i></button>
+              <button class="btn btn-danger" (click)="delete(brand.id)" ><i class="bi bi-trash"></i>
+
+        </button>
+      </div>
+    </td></tr>
+</tbody>
+</table>
+
+  </div>
+</div>
+

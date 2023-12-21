@@ -1,0 +1,12 @@
+<div class="me-2">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><button class="page-link" [class]="previousPageBtnClass" (click)="changePageBtn(navigation.previousPage)"
+          [disabled]="navigation.first">Anterio</button></li>
+      <li class="page-item" [ngClass]="navigation.actualPage ? 'active': '' " aria-current="page"><button
+          class="page-link">{{(this.navigation.actualPage )}}</button></li>
+      <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.nextPage)"
+          [disabled]="navigation.last">Siguiente</button></li>
+    </ul>
+  </nav>
+</div>

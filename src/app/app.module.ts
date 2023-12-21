@@ -14,6 +14,7 @@ import { NotfoundComponent } from './shared/pages/notfound/notfound.component';
 import { RouterModule } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
 import { BackofficeModule } from './contexts/backoffice/backoffice.module';
+import { PageBarComponent } from './shared/components/page-bar/page-bar.component';
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import { BackofficeModule } from './contexts/backoffice/backoffice.module';
     FrontofficeModule,
     BackofficeModule,
     AuthModule,
-    RouterModule
+    RouterModule,
+  ],
+  exports:[
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

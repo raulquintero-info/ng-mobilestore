@@ -1,0 +1,47 @@
+<div class="row ms-3 mt-3 mb-4">
+
+  <h3>Usuarios</h3><hr>
+</div>
+
+<div class="row mt-4 ms-3">
+
+  <div *ngIf="showError" class="alert alert-warning">{{ errorMessage }}</div>
+  <div id="formProduct" *ngIf="showForm">
+    <div class="row mt-3 ms-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="formId" class="form-label">Id</label>
+          <input class="form-control" type="text" [(ngModel)]="user.id" disabled id="formId">
+        </div>
+
+        <div class="mb-3">
+          <label for="formUsername" class="form-label">Usuario</label>
+          <input class="form-control" type="text" [(ngModel)]="user.username" disabled id="formUsername">
+        </div>
+
+        <div class="mb-3">
+          <label for="formRole" class="form-label">Rol</label>
+          <input class="form-control" type="text" [(ngModel)]="user.rol!.name" disabled id="formRole">
+        </div>
+
+        <div class="mb-3">
+          <label for="formPassword" class="form-label">Contraseña</label>
+          <input class="form-control" [(ngModel)]="user.password" type="password" id="formPassword" placeholder="*****">
+        </div>
+      </div>
+      <div class="col-md-6 ">
+
+        <div class="col-md-12 pe-3" astyle="width: 100%;height:300px; border:1px rgb(139, 138, 138) solid">
+
+          <!-- <button class="btn btn-primary mt-4" (click)="saveProduct()">Grabar Registro</button> -->
+          <!-- Button trigger modal -->
+          <br>
+          <button type="button" (click)="save()" class="btn btn-primary mt-2">Actualizar Contraseña</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  </div>

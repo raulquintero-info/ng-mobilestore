@@ -6,7 +6,6 @@ import { CategoryService } from 'src/app/core/services/models/category.service';
 import { ProductService } from 'src/app/core/services/models/product.service';
 import { NavPage } from './nav-page';
 import { ProductsPageable } from 'src/app/core/interfaces/productsPageable.interface';
-
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -14,7 +13,7 @@ import { ProductsPageable } from 'src/app/core/interfaces/productsPageable.inter
 })
 export class ProductsListComponent implements OnInit {
   // private params: any;
-  private queryParams: any;
+  public queryParams: any;
   private queryParamsString: string = '';
   public errorMessage: string = '';
   public showError: boolean = false;
@@ -24,6 +23,7 @@ export class ProductsListComponent implements OnInit {
   public page: number = 0;
   public navigation: NavPage = {} as NavPage;
   public actualPage: number = 1;
+  public newPage: number=0;
 
 
   constructor(
@@ -63,6 +63,7 @@ export class ProductsListComponent implements OnInit {
         if(!this.navigation.last) this.navigation.end = page * dt.size;
           else this.navigation.end = dt.totalElements;
         this.navigation.start = this.navigation.end - dt.size + 1;
+        console.log('dt', dt);
       },
       error: error => {
         alert('algo salio mal en el servidor')
@@ -107,8 +108,8 @@ export class ProductsListComponent implements OnInit {
     query.pag = newPage;
     query = new URLSearchParams(query).toString();
     // if (this.navigation.totalElements / this.navigation.size > this.navigation.nextPage)
-      console.log('/admin/productos?' + query);
-    console.log('newPage:',newPage);
+      // console.log('/admin/productos?' + query);
+    // console.log('newPage:',newPage);
     console.log('newNav', this.navigation);
     this.productService.getAllCatalog(newPage).subscribe({next: response => {this.products = response.content;}});
     this.getProducts(newPage);

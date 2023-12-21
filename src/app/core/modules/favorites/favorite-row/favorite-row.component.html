@@ -4,7 +4,7 @@
 
   </div>
   <div class="col-lg-2">
-    <span *ngIf="!product.isOffer" class="price"> {{ product.price | currency }}</span>
+    <span *ngIf="!product.isOffer" class="price"> <h4>MX {{ product.price | currency }}</h4></span>
     <div *ngIf="product.isOffer"><span style="text-decoration:line-through; color: gray;"> MX{{ product.price
         |currency}}</span> <span class="ms-2 badge bg-warning text-dark">Oferta</span><br>
         <span style="font-weight: bold; font-size: 1.5rem; color: red"> MX{{ product.offerPrice |currency}}</span>

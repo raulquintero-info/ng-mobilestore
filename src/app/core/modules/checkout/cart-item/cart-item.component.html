@@ -16,8 +16,10 @@
     <span *ngIf="item.isOffer" class="price"> {{ (item!.offerPrice! * item!.quantity!) | currency }}</span>
     <div class="btn-group mt-3" role="group" aria-label="Basic example">
 
-      <button class="btn btn-warning rounded-left" [disabled]="item.quantity == 1" (click)="removeItem(i)"><i
-          class="bi bi-dash-circle"></i></button>
+      <button class="btn btn-warning rounded-left" [disabled]="item.quantity == 1" (click)="removeItem(i)">
+        <!-- <i class="bi bi-dash-circle"></i> -->
+      -
+      </button>
       <input type="text" readonly value="{{item.quantity}}" style="width: 50px; text-align: center;
               background-color: #ffc107 ;
               color: black;

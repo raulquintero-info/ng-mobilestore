@@ -3,10 +3,16 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .border-check{
+  font-size: 1.5rem;
   border: 1px solid rgb(4, 37, 136);
 }
 .address{
   font-size: .75rem;
   font-style: italic;
 
+}
+input:checked {
+  border: none;
+  font-size: 1.5rem;
+  outline: 2px solid #ff83c6;
 }

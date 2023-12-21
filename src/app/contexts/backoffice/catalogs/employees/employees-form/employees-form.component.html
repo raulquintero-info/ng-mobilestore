@@ -1,0 +1,72 @@
+<div class="row ms-3 mt-3 mb-4">
+
+  <h3>Empleado</h3>
+  <hr>
+</div>
+
+<div class="row mt-3 ms-3 mb-5">
+
+  <div *ngIf="showError" class="alert alert-warning">{{ errorMessage }}</div>
+  <div id="formProduct" *ngIf="showForm">
+    <div class="row mt-3 ms-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="formId" class="form-label">Id</label>
+          <input class="form-control" type="text" [(ngModel)]="employee.id" disabled id="formId">
+        </div>
+
+        <div class="mb-3">
+          <label for="formName" class="form-label">Nombre</label>
+          <input class="form-control" [(ngModel)]="employee.human!.name" type="text" id="formName">
+        </div>
+        <div class="mb-3">
+          <label for="formQuantity" class="form-label">Apellido</label>
+          <input class="form-control" type="text" [(ngModel)]="employee.human!.lastname" id="formQuantity">
+        </div>
+        <div class="mb-3">
+          <label for="formQuantity" class="form-label">Direccion</label>
+          <input class="form-control" type="text" [(ngModel)]="employee.human!.address1" id="formQuantity">
+        </div>
+        <div class="mb-3">
+          <label for="formPrice" class="form-label">Telefono</label>
+          <input class="form-control" type="text" [(ngModel)]="employee.human!.telephone" id="formPrice">
+        </div>
+        <div class="mb-3">
+          <label for="formPrice" class="form-label">Email</label>
+          <input class="form-control" type="text" [(ngModel)]="employee.human!.email" id="formPrice">
+        </div>
+      </div>
+      <div class="col-md-6 ">
+
+        <div class="col-md-12 pe-3" astyle="width: 100%;height:300px; border:1px rgb(139, 138, 138) solid">
+
+          <div class="mb-3">
+            <label for="formPrice" class="form-label">Codigo Postal</label>
+            <input class="form-control" type="number" [(ngModel)]="employee.human!.postalcode" id="formPrice">
+          </div>
+          <div class="mb-3">
+            <label for="formQuantity" class="form-label">Colonia/Fracc</label>
+            <input class="form-control" type="text" [(ngModel)]="employee.human!.address2" id="formQuantity">
+          </div>
+          <div class="mb-3">
+            <label for="formPrice" class="form-label">Ciudad</label>
+            <input class="form-control" type="text" [(ngModel)]="employee.human!.city" id="formPrice">
+          </div>
+          <div class="mb-3">
+            <label for="formPrice" class="form-label">Pais</label>
+            <input class="form-control" type="text" [(ngModel)]="employee.human!.country" id="formPrice">
+          </div>
+          <!-- <button class="btn btn-primary mt-4" (click)="saveProduct()">Grabar Registro</button> -->
+          <!-- Button trigger modal -->
+          <br>
+          <button type="button" (click)="save()" class="btn btn-primary ms-2 mt-2 mb-2">Grabar Cliente</button>
+          <hr>
+          <button *ngIf="employee.id > 0 " type="button" class="btn btn-sm btn-link  ">Cambiar Password</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

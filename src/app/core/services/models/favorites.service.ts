@@ -37,7 +37,7 @@ export class FavoritesService {
 
     this.favorites = [];
     this.http.get<FavoriteProduct[]>(this.urlBase + '/' + userId)
-      .subscribe({ next: resp => { this.setFavoritesCart(resp);}})
+      .subscribe({ next: resp => { console.log(resp);this.setFavoritesCart(resp);}})
   }
 
   add(favoriteProduct: FavoriteProduct): Observable<any> {

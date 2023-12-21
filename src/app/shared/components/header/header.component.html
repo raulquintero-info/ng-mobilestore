@@ -5,7 +5,12 @@
         <h3 routerLink="/inicio">MobileStore</h3>
       </div>
     </div>
-    <div class="col col mt-4 text-end  ">
+
+    <div class="col mt-4 text-end  ">
+      <input type="text" class="me-3 ps-3" placeholder="Bucar productos en MobileStore" style="width: 100%;    border-radius: 9999px;">
+      <button aria-label="Icono de búsqueda" class="absolute bn br-200 search-icon" style="cursor:pointer"><i class="bi bi-search absolute" style="font-size:1rem;vertical-align:-0.175em;top:50%;left:50%;transform:translate(-50%, -50%);width:1rem;height:1rem;box-sizing:content-box" data-automation-id="search-icon" aria-hidden="true"></i></button>
+      </div>
+    <div class="col mt-4 text-end  ">
       <!-- {{ favoriteProducts.length }} -->
       <a *ngIf="userData.rol.name!='admin' && userLoginOn" class="" style="color:white; text-decoration:none"
         [routerLink]="'/mis-favoritos'">
@@ -29,7 +34,7 @@
         <h5>MobileStore</h5>
       </div>
     </div>
-    <div class="col col text-end  ">
+    <div class="col text-end  ">
       <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none"
         [routerLink]="'/mis-favoritos'">
         <i *ngIf="!favoriteProducts.length" class="bi bi-heart me-3"></i>

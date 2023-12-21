@@ -1,0 +1,61 @@
+<div class="row ms-3 mt-3 mb-4">
+
+  <h3>Marcas</h3>
+  <hr>
+</div>
+
+<div class="row mt-4 ms-3">
+
+  <div *ngIf="showError" class="alert alert-warning">{{ errorMessage }}</div>
+  <div id="formProduct" *ngIf="showForm">
+    <div class="row mt-3 ms-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="formId" class="form-label">Id</label>
+          <input class="form-control" type="text" [(ngModel)]="brand.id" disabled id="formId">
+        </div>
+
+        <div class="mb-3">
+          <label for="formName" class="form-label">Nombre</label>
+          <input class="form-control" [(ngModel)]="brand.brandname" type="text" id="formName">
+        </div>
+      </div>
+      <div class="col-md-6 ">
+
+        <div class="col-md-12 pe-3" astyle="width: 100%;height:300px; border:1px rgb(139, 138, 138) solid">
+
+          <!-- <button class="btn btn-primary mt-4" (click)="saveProduct()">Grabar Registro</button> -->
+          <!-- Button trigger modal -->
+          <br>
+          <button type="button" [disabled]="!brand.brandname" class="btn btn-primary mt-2" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Grabar Categoria</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Esta Seguro que desea Grabar esta Marca?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary " (click)="save()" data-bs-dismiss="modal">Grabar</button>
+
+      </div>
+    </div>
+  </div>
+</div>

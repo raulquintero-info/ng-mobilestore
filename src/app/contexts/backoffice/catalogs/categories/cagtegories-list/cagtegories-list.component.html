@@ -1,0 +1,80 @@
+<div class="row ms-3 mt-3 mb-4">
+
+  <h3>Categorias</h3>
+  <hr>
+</div>
+
+<div class="ms-3">
+  <button class="btn btn-flat xbtn-sm mb-2 btn-warning ms-auto" (click)="gotoAltas()"><i
+      class="bi bi-plus-circle"></i> Nueva Categoria</button>
+</div>
+<div class="row mt-3 ms-3">
+
+  <div>
+
+  </div>
+
+  <table class="table table-light  table-striped">
+    <thead class="">
+      <tr>
+        <th class="table-dark">id</th>
+        <th class="table-dark">Categoria</th>
+        <th class="table-dark">Cant. Productos</th>
+        <th class="table-dark">Habilitado</th>
+        <th class="table-dark">Opciones</th>
+      </tr>
+    </thead>
+    <tbody class="">
+
+
+      <tr *ngFor="let category of categories">
+        <th>{{ category.id}}</th>
+        <td>{{category.name}}</td>
+        <td>{{ category.quantity }}</td>
+        <td>
+          <i class="bi bi-toggle-on" *ngIf="category.isEnabled" style="font-size:2rem;"></i>
+          <i class="bi bi-toggle-off" *ngIf="!category.isEnabled" style="font-size:2rem;"></i>
+
+        </td>
+        <td>
+          <div class="btn-group">
+
+            <button class="btn btn-warning" (click)="editCategory(category.id)"><i
+                class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-danger" [disabled]="category.quantity>0" (click)="delete(category.id)"><i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <!-- <tr><th>2</th><td>Tabletas</td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-secondary text-light"><i class="bi bi-pencil-square"></i></button>
+              <button class="btn btn-danger"><i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      <tr><th>3</th><td>Laptops</td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-danger"><i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr><th>4</th><td>Smart Watches</td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-danger"><i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+
+
+</div>
