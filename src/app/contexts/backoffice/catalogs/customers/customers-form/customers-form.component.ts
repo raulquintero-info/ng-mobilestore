@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from 'src/app/core/interfaces/customer.interface';
-import { Human } from 'src/app/core/interfaces/human.interface';
+import { Address } from 'src/app/core/interfaces/address.interface';
 import { Role } from 'src/app/core/interfaces/role.interface';
 import { User } from 'src/app/core/interfaces/user.interface';
 import { UserLogged } from 'src/app/core/interfaces/userLogged.interface';
 import { LoginService } from 'src/app/core/services/login/login.service';
+import { AddressService } from 'src/app/core/services/models/address.service';
 import { CustomerService } from 'src/app/core/services/models/customer.service';
 
 @Component({
@@ -18,13 +18,14 @@ export class CustomersFormComponent {
 
   showForm: boolean = true;
   role: Role = {id:2, name: ''}
-  user: User = {id: 0, username: '', password: '', rol: this.role};
-  human: Human = { id: 0, name: '', lastname: '', address1: '', address2: '', email: '', city: '', country: '', telephone: '', postalcode: 0, user: this.user};
-  customer: Customer = { id: 0, human: this.human };
+  customer: User = {id: 0} as User;
+  // human: Human = { id: 0, name: '', lastname: '', address1: '', address2: '', email: '', city: '', country: '', telephone: '', postalcode: 0, user: this.user};
+  // customer: Customer = { id: 0 };
   errorMessage: string = '';
   showError: boolean = false;
   customers: any;
   params: any;
+  addresses: Address[] = [];
   public userLogged?: UserLogged;
 
 
@@ -36,6 +37,7 @@ export class CustomersFormComponent {
     private router: Router,
     private customerService: CustomerService,
     private loginService: LoginService,
+    private addressService: AddressService
     ) { }
 
   ngOnInit() {
@@ -54,6 +56,18 @@ export class CustomersFormComponent {
         this.userLogged = currentUserData;
       }
     })
+
+    this.addressService.getByUserId(this.params.params.id)
+      .subscribe({
+        next: resp=>{
+          console.log('adresses:', resp)
+          this.addresses = resp;
+        },
+        error: error=>{
+          console.log('error',error);
+        }
+      })
+
   }
 
 
@@ -65,9 +79,9 @@ export class CustomersFormComponent {
   getCustomerById(id: number) {
      if (id>0)
       this.customerService.getById(id).subscribe({
-        next: (resp) => {this.customer = resp;},
+        next: (resp) => {console.log('customer',resp); this.customer = resp;},
         error: error => {
-          this.errorMessage = 'Es posible que es registro ya no exista';
+          this.errorMessage = 'Es posible que este registro ya no exista';
           this.showError = true;
           console.log(error)}
       });
@@ -78,7 +92,6 @@ export class CustomersFormComponent {
     //todo: fix validations
     if (this.customer.id == null  ) { this.errorMessage = 'complete todos los datos'; this.showError = true; console.log(this.showError);
     } else{
-      console.log(this.customer.human!.email);
       this.customerService.saveOrUpdate(this.customer).subscribe({
         next: resp => {
           console.log(resp);

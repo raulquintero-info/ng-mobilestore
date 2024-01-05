@@ -5,6 +5,7 @@ import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { Cart } from 'src/app/core/interfaces/cart.interface';
 // import { CartItem } from '../interfaces/cartitem.interface';
 import { Product } from 'src/app/core/interfaces/product.interface';
+import { User } from '../../interfaces/user.interface';
 // import { isArray } from 'jquery';
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +13,7 @@ export class CartService {
   urlBase = "http://localhost:8080/api/checkout";
 
   item: Product = { id: 0, price: 0, isOffer: false, offerPrice: 0};
-  cartitems: Cart = { items: [], total: 0, totalAbs: 0, pickup: 0};
+  cartitems: Cart = { orderproducts: [], total: 0, totalAbs: 0, pickup: 0, user: {} as User};
   private cart: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.cartitems);
 
   constructor(private http: HttpClient) {
@@ -35,12 +36,18 @@ export class CartService {
     this.cart.next(this.cartitems);
   }
 
+  restart(){
+    this.cartitems = { orderproducts: [], total: 0, totalAbs: 0, pickup: 0, user: {} as User};
+    this.cart.next(this.cartitems);
+    localStorage.removeItem('cartitems');
+  }
+
   remove(index: number) {
     this.checkCartItems();
     console.log('index >> ', index)
-    this.cartitems!.items.splice(index, 1);
+    this.cartitems!.orderproducts.splice(index, 1);
     let total = 0;
-    for (let x of this.cartitems.items) {
+    for (let x of this.cartitems.orderproducts) {
       total += x.price;
     }
     console.log('total>> ', total);
@@ -53,15 +60,15 @@ export class CartService {
     // const index = this.cartitems.items.map(i => i.id).indexOf(id);
     if (index >= 0) {
       console.log("restando", index)
-      this.cartitems.items[index].quantity!--;
+      this.cartitems.orderproducts[index].quantity!--;
     }
-    if (this.cartitems.items[index].quantity! < 1) {
+    if (this.cartitems.orderproducts[index].quantity! < 1) {
       console.log("eliminando", index)
-      this.cartitems.items.splice(index,1);
+      this.cartitems.orderproducts.splice(index,1);
     }
     let total = 0;
     let totalAbs = 0;
-    for (let x of this.cartitems.items) {
+    for (let x of this.cartitems.orderproducts) {
       // total += x.price*x.quantity!;
       total +=(!x.isOffer)?x.price*x.quantity!:x.offerPrice * x.quantity!;
       totalAbs += x.price * x.quantity!;
@@ -70,7 +77,7 @@ export class CartService {
     console.log('totalAbs>> ', totalAbs);
     this.cartitems.total = total;
     this.cartitems.totalAbs = totalAbs;
-    if (this.cartitems.items.length == 0)
+    if (this.cartitems.orderproducts.length == 0)
       this.cartitems.totalAbs = 0;
 
     this.setCartitems(this.cartitems);
@@ -80,17 +87,17 @@ export class CartService {
   addItem(item: Product) {
     this.checkCartItems()
 
-    const index = this.cartitems.items.map(i => i.id).indexOf(item.id);
+    const index = this.cartitems.orderproducts.map(i => i.id).indexOf(item.id);
     if (index < 0) {
       item.quantity = 1;
-      this.cartitems.items.push(item);
+      this.cartitems.orderproducts.push(item);
     }
     else
-    { this.cartitems.items[index].quantity!++; }
+    { this.cartitems.orderproducts[index].quantity!++; }
 
     let total = 0;
     let totalAbs = 0
-    for (let x of this.cartitems.items) {
+    for (let x of this.cartitems.orderproducts) {
       // if(!x.isOffer)
       //   total += x.price*x.quantity!;
       // else total += x.offerPrice * x.quantity!;
@@ -109,7 +116,7 @@ export class CartService {
 
 
 
-  sendOrder(): Observable<any> { return this.http.post(this.urlBase, this.cart); }
+  sendOrder(): Observable<any> { console.log(this.urlBase, this.cartitems);return this.http.post(this.urlBase, this.cartitems); }
 
 
 

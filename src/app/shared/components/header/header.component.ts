@@ -43,21 +43,33 @@ export class HeaderComponent implements OnInit, OnDestroy{
       }
     })
 
-    this.favoritesService.myFavoritesCart.subscribe({
-      next:(favorites => {
-        console.log('favorites:',favorites);
-        this.favoriteProducts = favorites})
-      });
+    if(this.userData.rol.name=="customer") {
+
+      this.favoritesService.myFavoritesCart.subscribe({
+        next:(favorites => {
+          console.log('favorites:',favorites);
+          this.favoriteProducts = favorites})
+        });
+      this.favoritesService.getAll();
+    }
 
     this.cartService.Cart.subscribe({next:(cart)=>{console.log('header-cart', cart);this.cart = cart;}})
     this.cartService.checkCartItems();
-    this.favoritesService.getAll();
 
 
   }
 
 
-
+logout(){
+    console.log('logout>>>>');
+    this.cart.address1 = '';
+    this.cart.address2 = '';
+    this.cart.city = '';
+    this.cart.country = '';
+    this.cart.zipCode = '';
+    this.cartService.setCartitems(this.cart);
+    this.loginService.logout()
+  }
 
 
   ngOnDestroy(){
@@ -65,10 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.loginService.currentUserData.unsubscribe();
   }
 
-  logout(){
-    console.log('logout>>>>');
-    this.loginService.logout()
-  }
+
 
 
 

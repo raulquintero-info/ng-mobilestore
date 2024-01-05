@@ -32,12 +32,22 @@ import { UsersFormComponent } from './contexts/backoffice/catalogs/users/users-f
 import { RolesListComponent } from './contexts/backoffice/catalogs/roles/roles-list/roles-list.component';
 import { RolesFormComponent } from './contexts/backoffice/catalogs/roles/roles-form/roles-form.component';
 import { BrandsFormComponent } from './contexts/backoffice/catalogs/brands/brands-form/brands-form.component';
+import { ProfileComponent } from './shared/pages/profile/profile/profile.component';
+import { ProfilePersonalFormComponent } from './shared/pages/profile/profile-personal-form/profile-personal-form.component';
+import { ProfileAddressesFormComponent } from './shared/pages/profile/profile-addresses-form/profile-addresses-form.component';
+import { ProfileAccountFormComponent } from './shared/pages/profile/profile-account-form/profile-account-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'registrar', component: RegisterComponent},
   {path: 'logout', component: LogoutComponent},
+
+  {path: 'perfil', component: ProfileComponent},
+  {path: 'perfil/personal', component: ProfilePersonalFormComponent},
+  {path: 'perfil/direcciones', component: ProfileAddressesFormComponent},
+  {path: 'perfil/cuenta', component: ProfileAccountFormComponent},
+
   {path: 'home', component: HomeComponent},
   {path: 'home/:id', component: HomeComponent},
   {path: 'producto/:id', component: ProductDetailsComponent},
@@ -48,7 +58,7 @@ const routes: Routes = [
 
   {path: 'mis-favoritos', component: MyFavoritesComponent},
   {path: 'mis-compras', component: MyPurchasesComponent},
-  {path: 'mis-compras/:id', component: PurchaseComponent},
+  {path: 'mi-compra/:id', component: PurchaseComponent},
   {path: 'mi-carrito', component: CartComponent},
   {path: 'tipo-de-envio', component: ShippingTypeComponent},
   {path: 'resumen-de-la-orden', component: OrderResumeComponent},
@@ -69,7 +79,7 @@ const routes: Routes = [
   {path: 'admin/productos/forma/:id', component: ProductsFormComponent},
 
   {path: 'admin/ordenes', component: OrdersListComponent},
-  {path: 'admin/ordenes/:id', component: OrdersDetailsComponent},
+  {path: 'admin/orden/:id', component: OrdersDetailsComponent},
 
   {path: 'admin/marcas', component: BrandsListComponent},
   {path: 'admin/marcas/nuevo', component: BrandsFormComponent},

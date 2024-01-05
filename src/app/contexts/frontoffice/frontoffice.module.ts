@@ -33,6 +33,8 @@ import { OrderResumeComponent } from './checkout/order-resume/order-resume.compo
     ShippingTypeComponent,
     PurchaseComponent,
     OrderResumeComponent,
+
+    // PhonePipe
   ],
   imports: [
     BrowserModule,

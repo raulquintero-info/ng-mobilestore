@@ -16,6 +16,11 @@
     <div class="row ms-3 mt-5" *ngIf="userLoginOn" >
 
       <div class="col-md-12">
+        <div *ngIf="products.length==0">
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-heart"></i> Aun no has agregado ningun producto a tus favoritos.
+          </div>
+        </div>
         <app-favorite-row [product]="product" [i]="i" *ngFor="let product of products;  let i = index"></app-favorite-row>
       </div>
     </div>

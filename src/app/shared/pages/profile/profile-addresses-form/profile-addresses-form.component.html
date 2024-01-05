@@ -1,0 +1,82 @@
+<div class="container window mt-3">
+  <div class="mt-2 mb-3">
+
+    <h4>Administra tus direcciones postales</h4><hr>
+    <button class="btn btn-secondary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i> Agregar Dirección</button>
+
+    <div class="window ps-2 pt-2 pb-2" *ngFor="let a of addresses">
+      <div class="d-flex justify-content-between">
+
+        <div class="p-8">
+
+          <div><strong>{{a.alias | uppercase}}</strong>
+            <!-- <span *ngIf="a.primaryAddress">[por defecto]</span> -->
+          </div>
+          <div> {{ a.address1 + ", " + a.address2 | titlecase}},</div>
+          <div>{{a.city}}, {{a.country}}, {{a.zipCode}}</div>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-outline-danger btn-sm" (click)="delete(a.id)">Eliminar</button>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Direccion Nueva</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputAlias" class="form-label">Alias</label>
+            <input type="text" class="form-control" [(ngModel)]="address.alias" id="alias" name="alias" aria-describedby="aliasHelp">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputAddress1" class="form-label">Direccion 1</label>
+            <input type="text" class="form-control" [(ngModel)]="address.address1" id="address1" name="address1" aria-describedby="address1Help">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputAddress2" class="form-label">Direccion 2</label>
+            <input type="text" class="form-control" [(ngModel)]="address.address2" id="address2" name="address2" aria-describedby="address2Help">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputZipCode" class="form-label">Codigo Postal</label>
+            <input type="text" class="form-control" [(ngModel)]="address.zipCode" id="zipCode" name="zipCode" aria-describedby="zipCodeHelp">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputCity" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" [(ngModel)]="address.city" id="city" name="city" aria-describedby="cityHelp">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputCountry" class="form-label">Pais</label>
+            <input type="text" class="form-control" [(ngModel)]="address.country" id="country" name="country" aria-describedby="countryHelp">
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="save()" data-bs-dismiss="modal">Grabar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,12 @@ import { RouterModule } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
 import { BackofficeModule } from './contexts/backoffice/backoffice.module';
 import { PageBarComponent } from './shared/components/page-bar/page-bar.component';
-
+import { ProfileComponent } from './shared/pages/profile/profile/profile.component';
+import { ProfilePersonalFormComponent } from './shared/pages/profile/profile-personal-form/profile-personal-form.component';
+import { ProfileAccountFormComponent } from './shared/pages/profile/profile-account-form/profile-account-form.component';
+import { ProfileAddressesFormComponent } from './shared/pages/profile/profile-addresses-form/profile-addresses-form.component';
+import { PhonePipe } from './core/pipes/phone.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,11 @@ import { PageBarComponent } from './shared/components/page-bar/page-bar.componen
     FooterComponent,
     LogoutComponent,
     NotfoundComponent,
+    ProfileComponent,
+    ProfilePersonalFormComponent,
+    ProfileAccountFormComponent,
+    ProfileAddressesFormComponent,
+    PhonePipe,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +44,11 @@ import { PageBarComponent } from './shared/components/page-bar/page-bar.componen
     BackofficeModule,
     AuthModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
+    PhonePipe
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

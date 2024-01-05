@@ -66,7 +66,7 @@ export class CagtegoriesFormComponent {
           next: resp => {
             console.log(resp);
             this.category = resp.category;
-            this.errorMessage = "Cliente Actualizado";
+            this.errorMessage = resp.mensaje;
             this.showError = true;
           },
           error: error => {

@@ -16,7 +16,7 @@ export class UsersFormComponent {
   role: Role = {id: 2, name:''}
   // human: Human = {id: 0, name: '', lastname: '', email: '', address1: '',
   //   address2: '', city: '', country: '', telephone: '', postalcode: 0};
-  user: User = { id: 0, username: '', password:'' , rol: this.role};
+  user: User = { id: 0} as User;
   errorMessage: string = '';
   showError: boolean = false;
   categories: Array<User> = [];

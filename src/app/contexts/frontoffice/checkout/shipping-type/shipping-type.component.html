@@ -10,22 +10,6 @@
         <div class="col">
           <h4>Seleccione tipo de envio</h4>
           <hr>
-
-          <div class="d-flex justify-content-between">
-
-            <div class="p-2">
-              <label class="form-check-label" for="flexRadioDefault1">
-                A mi domicilio ($0.00)
-                <div class="address ms-2">Av. La Joya 2291, Col. Revolucion, 21394 [por defecto]<br> Mexicali, Mexico</div>
-                <div><button class="btn btn-primary mt-2">Cambiar Domicilio</button></div>
-              </label>
-            </div>
-            <div class="p-2">
-              <input class="form-check-input border-check" type="radio"
-                [checked]="cart.pickup==1" (change)="setPickup(1)" name="flexRadioDefault" id="flexRadioDefault1">
-            </div>
-          </div>
-          <hr>
           <div class="d-flex justify-content-between">
             <div class="p-2">
               <label class="form-check-label" for="flexRadioDefault2">
@@ -33,10 +17,27 @@
               </label>
             </div>
             <div class="p-2">
-              <input class="form-check-input border-check" type="radio" [checked]="cart.pickup==2" (change)="setPickup(2)" name="flexRadioDefault" id="flexRadioDefault2">
+              <input class="form-check-input border-check" type="radio" [checked]="cart.pickup==1" (change)="setPickup(1)" name="flexRadioDefault" id="flexRadioDefault2">
             </div>
           </div>
           <hr>
+          <div class="d-flex justify-content-between">
+
+            <div class="p-2">
+              <label class="form-check-label" for="flexRadioDefault1">
+                A mi domicilio ($0.00)
+                <div class="address ms-2">{{cart.address1 | titlecase}}, {{cart.address2 |titlecase}},
+                  {{ cart.zipCode }} <br> {{ cart.city |titlecase }}, {{cart.country |titlecase}}</div>
+                <div><button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Cambiar Domicilio</button></div>
+              </label>
+            </div>
+            <div class="p-2">
+              <input class="form-check-input border-check" type="radio"
+                [checked]="cart.pickup==0" (change)="setPickup(0)" name="flexRadioDefault" id="flexRadioDefault1">
+            </div>
+          </div>
+          <hr>
+
           <div>
             <button class="btn btn-warning" [routerLink]="['/mi-carrito']"><i class="bi bi-chevron-left"></i> Regresar</button>
           </div>
@@ -62,4 +63,43 @@
   </div>
 
 
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Seleccionar Domicilio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="window ps-2 pt-2 pb-2" *ngFor="let a of addresses">
+          <div class="d-flex justify-content-between">
+
+            <div class="p-8">
+
+              <div>{{a.alias | uppercase}}
+                <!-- <span *ngIf="a.primaryAddress">[por defecto]</span> -->
+              </div>
+              <div> {{ a.address1 + ", " + a.address2 | titlecase}},</div>
+              <div>{{a.city}}, {{a.country}}, {{a.zipCode}}</div>
+            </div>
+            <div class="p-2">
+              <button class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal" (click)="setAddress(a)">Seleccionar</button>
+            </div>
+          </div>
+          <hr>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </div>

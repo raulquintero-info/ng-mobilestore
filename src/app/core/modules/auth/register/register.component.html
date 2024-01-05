@@ -19,8 +19,8 @@
 
               <div class="form-outline mt-3 mb-4">
                 <label class="form-label ms-2" for="form3Example3">Nombre</label>
-                <input formControlName="name" type="text" id="form3Example3" class="form-control form-control-lg"
-                  placeholder="Ingrese Apellido" />
+                <input formControlName="name" type="text" id="form3Examplen" class="form-control form-control-lg"
+                  placeholder="Ingrese Nombre" />
                 <div id="nameHelp" class="form-text text-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
                   <div *ngIf="name.errors?.['required']">
                     El nombre debe contener al menos 2 caracteres
@@ -29,7 +29,7 @@
               </div>
               <div class="form-outline mt-3 mb-4">
                 <label class="form-label ms-2" for="form3Example3">Apellido</label>
-                <input formControlName="lastname" type="text" id="form3Example3" class="form-control form-control-lg"
+                <input formControlName="lastname" type="text" id="form3Examplel" class="form-control form-control-lg"
                   placeholder="Ingrese Apellido" />
                 <div id="lastnameHelp" class="form-text text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                   <div *ngIf="lastname.errors?.['required']">
@@ -39,8 +39,8 @@
               </div>
               <!-- Email input -->
               <div class="form-outline mt-3 mb-4">
-                <label class="form-label ms-2" for="form3Example3">Email</label>
-                <input formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
+                <label class="form-label ms-2" for="form3Example3">Usuario / Email</label>
+                <input formControlName="email" type="email" id="form3Examplee" class="form-control form-control-lg"
                   placeholder="Ingrese Email" />
                 <div id="emailHelp" class="form-text text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                   <div *ngIf="email.errors?.['required']">

@@ -1,24 +1,66 @@
-<div class="container ">
+<div class="row ms-3 mt-3 mb-4">
 
-  <div class="row mb-4">
+  <h3>Detalle de la orden / compra</h3>
+  <hr>
+  <div style="text-align:right"><button class="btn btn-link" [routerLink]="['/admin/ordenes']"><i
+        class="bi bi-arrow-left-circle"></i> Regresar a todas las ordenes</button></div>
+</div>
 
-    <h3>Detalles de la compra del 12/03/2023 <span style="font-weight:lighter">( {{ cart.items.length }} artículos)</span></h3>
+<div class="container " *ngIf="order.id>0">
+  <div class="row mb-4 ms-3 me-1">
+    <div class="d-flex justify-content-between">
+      <div class="p-2 pt-2 ms-3">
+        <h5>Ticket: {{ order.id}}</h5>
+        <h5>Fecha: {{ order.date | date:'medium' }}</h5>
+        <h5>Cliente: {{ order.user.name + " " + order.user.lastname }}</h5>
+        <h5>Entregar en: <span *ngIf="order.pickup"> Tienda</span><span *ngIf="!order.pickup">Domicilio</span></h5>
+      </div>
+      <div class="p-2">
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="inputGroupSelect01">Status</label>
+
+          <select class="form-select" [(ngModel)]="order.orderstatus.id" id="inputGroupSelect01">
+            <!-- <option selected>Choose...</option> -->
+            <!-- <option value="1" selected>Nuevo</option> -->
+            <option *ngFor="let b of orderStatus" value="{{ b.id }}">{{ b.name }}</option>
+
+          </select>
+        </div>
+        <div>Fecha de entrega: {{ order.date | date }}</div>
+        <div>Entregado el: {{ order.date | date:'medium' }}</div>
+      </div>
+    </div>
+    <div style='background-color:#dc3545; width:100%; color: white; font-weight: bold; text-align: center'>Detalles
+    </div>
+
   </div>
-  <div class="d-grid gap-2 mt-2 mb-3"><button class="btn btn-success" [routerLink]="['/mis-compras']"
-    routerLinkActive="router-link-active">Ver Todas las Ordenes</button></div>
-  <div class="row mt-5 ms-3">
+  <!-- <div class="d-grid gap-2 mt-2 mb-3"><button class="btn btn-success" [routerLink]="['/mis-compras']"
+      routerLinkActive="router-link-active">Regresar a ver Todas las Ordenes</button></div> -->
+  <div class="row mt-3 ms-3">
     <div class="col-lg-8">
 
 
-      <app-purchase-item [item]="item" [i]="i" *ngFor="let item of cart.items; let i = index"></app-purchase-item>
+      <app-purchase-item [item]="item" [i]="i"
+        *ngFor="let item of order.orderproducts; let i = index"></app-purchase-item>
 
+      <div class="row row-product  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-6" style="text-align: right; font-weight: bold">TOTAL</div>
+        <div class="col-lg-3" style="text-align:right">MX {{ order.total | currency }}</div>
 
+        <div class="col-lg-1 text-left"></div>
+      </div>
     </div>
     <div class="col-lg-4 ">
 
-      <app-purchase-total [cart]="cart" ></app-purchase-total>
+      <app-purchase-total [order]="order"></app-purchase-total>
 
 
     </div>
   </div>
+</div>
+
+
+<div class="container " *ngIf="order.id== null">
+  <div class="alert alert-danger" role="alert">Esta orden no se encontro en la base de datos.</div>
 </div>

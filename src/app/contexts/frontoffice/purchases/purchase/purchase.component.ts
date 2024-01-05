@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from 'src/app/core/interfaces/cart.interface';
-import { CartService } from 'src/app/core/services/models/cart.service';
+import { ActivatedRoute } from '@angular/router';
+import { Order } from 'src/app/core/interfaces/order.interface';
+import { OrderService } from 'src/app/core/services/models/order.service';
 
 @Component({
   selector: 'app-purchase',
@@ -8,19 +9,21 @@ import { CartService } from 'src/app/core/services/models/cart.service';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-  cart: Cart = {} as Cart;
-
-  constructor(private cartService: CartService){}
+  order: Order = {} as Order;
+  params: any;
+  constructor(private orderService: OrderService, private route: ActivatedRoute){}
 
   ngOnInit(){
-    this.cartService.Cart.subscribe({
-      next: (cart) => {
-        console.log('header-cart', cart);
-        this.cart = cart;
-      }
-    })
-    this.cartService.checkCartItems();
+    this.route.paramMap.subscribe(params => this.params = params);
+    this.getOrderById(this.params.params.id);
+  }
 
+  getOrderById(id: number){
+    this.orderService.getById(id)
+    .subscribe({
+      next: resp => { console.log('order', resp);this.order = resp; },
+      error: resp=> { console.log('error', resp); }
+    });
   }
 
 }

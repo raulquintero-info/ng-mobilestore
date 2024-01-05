@@ -18,22 +18,24 @@
             <tr>
 
               <th class="table-dark">Fecha</th>
+              <th class="table-dark">Cliente</th>
               <th class="table-dark">Total</th>
-              <th class="table-dark">Tipo De Envio</th>
+              <th class="table-dark">Entregar en</th>
               <th class="table-dark">Status</th>
               <th class="table-dark">Opciones</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
             <tr *ngFor="let p of orders">
-              <td>{{p.date}}</td>
+              <td>{{p.date | date:'medium'}}</td>
+              <td>{{p.user.name + " " + p.user.lastname | titlecase}}</td>
               <td>{{ p.total | currency }}</td>
-              <td>{{ p.shippingType.shippingType| titlecase}}</td>
-              <td>{{ 'procesando'| titlecase}}</td>
+              <td class="text-center"><span *ngIf="p.pickup">Tienda</span><span *ngIf="!p.pickup"  >Domicilio Cliente</span></td>
+              <td>{{ p.orderstatus.name| titlecase}}</td>
               <td style="text-align:center">
 
-                <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/admin/ordenes/', p.id ]"
-                  title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i></button>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/admin/orden/', p.id ]"
+                  title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i> Ver Detalles</button>
 
               </td>
             </tr>

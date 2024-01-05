@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Employee } from 'src/app/core/interfaces/employee.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Human } from 'src/app/core/interfaces/human.interface';
+import { User } from 'src/app/core/interfaces/user.interface';
+import { EmployeeService } from 'src/app/core/services/models/employee.service';
 
 @Component({
   selector: 'app-employees-form',
@@ -12,8 +13,7 @@ import { Human } from 'src/app/core/interfaces/human.interface';
 export class EmployeesFormComponent {
 
   showForm: boolean = true;
-  human: Human = {id: 0, name:'',lastname: '', address1:'', address2:'', email:'',city:'', country:'',telephone:'', postalcode: 0};
-  employee: Employee = {id:0, human: this.human};
+  employee: User = {id: 0} as User;
   errorMessage: string ='';
   showError: boolean = false;
   employees: any;
@@ -21,7 +21,11 @@ export class EmployeesFormComponent {
 
   url = 'http://localhost:8080/api';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient){}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private employeeService: EmployeeService){}
 
   ngOnInit(){
     this.route.paramMap.subscribe(params => this.params = params);
@@ -29,11 +33,14 @@ export class EmployeesFormComponent {
     this.getEmployees(this.params.params.id);
 
   }
-
+  gotoUser(id: number){
+    this.router.navigate(
+      ['/admin/sistema/usuarios/' + id]);
+  }
   save(){
     console.log(this.employee);
 
-    if (this.employee.id == null || this.employee.human?.name == '' || this.employee.human?.email == null ) {
+    if (this.employee.id == null || this.employee.name == '' || this.employee.email == null ) {
       this.errorMessage = 'complete todos los datos';
       this.showError = true;
       console.log(this.showError);
@@ -107,6 +114,22 @@ export class EmployeesFormComponent {
         })
   }
 
+  saveOrUpdate() {
+    console.log('cliente:> ', this.employee);
+    //todo: fix validations
+    if (this.employee.id == null  ) { this.errorMessage = 'complete todos los datos'; this.showError = true; console.log(this.showError);
+    } else{
+      this.employeeService.saveOrUpdate(this.employee).subscribe({
+        next: resp => {
+          console.log(resp);
+          this.employee.id=resp.employee.id;
+          this.errorMessage = resp.message;
+          this.showError = true;},
+        error: error => { console.log(error);this.errorMessage = error.error.message; this.showError = true}
+      });
+
+    }
+  }
 
 }
 

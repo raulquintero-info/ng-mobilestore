@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Cart } from 'src/app/core/interfaces/cart.interface';
+import { Order } from '../../../interfaces/order.interface';
 
 @Component({
   selector: 'app-purchase-total',
@@ -7,6 +7,6 @@ import { Cart } from 'src/app/core/interfaces/cart.interface';
   styleUrls: ['./purchase-total.component.css']
 })
 export class PurchaseTotalComponent {
-  @Input() cart: Cart = {} as Cart;
+  @Input() order: Order = {} as Order;
 
 }

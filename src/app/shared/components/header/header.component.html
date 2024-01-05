@@ -6,10 +6,10 @@
       </div>
     </div>
 
-    <div class="col mt-4 text-end  ">
+    <!-- <div class="col mt-4 text-end  ">
       <input type="text" class="me-3 ps-3" placeholder="Bucar productos en MobileStore" style="width: 100%;    border-radius: 9999px;">
       <button aria-label="Icono de búsqueda" class="absolute bn br-200 search-icon" style="cursor:pointer"><i class="bi bi-search absolute" style="font-size:1rem;vertical-align:-0.175em;top:50%;left:50%;transform:translate(-50%, -50%);width:1rem;height:1rem;box-sizing:content-box" data-automation-id="search-icon" aria-hidden="true"></i></button>
-      </div>
+      </div> -->
     <div class="col mt-4 text-end  ">
       <!-- {{ favoriteProducts.length }} -->
       <a *ngIf="userData.rol.name!='admin' && userLoginOn" class="" style="color:white; text-decoration:none"
@@ -19,7 +19,7 @@
       </a>
       <a *ngIf="userData.rol.name!='admin'" class="" style="color:white; text-decoration:none" href="/mi-carrito"><i
           class="bi bi-cart4 "></i>
-        <span *ngIf="cart.items.length" class="cart-count">&nbsp;{{ cart.items.length }}&nbsp;&nbsp;</span>
+        <span *ngIf="cart.orderproducts.length" class="cart-count">&nbsp;{{ cart.orderproducts.length }}&nbsp;&nbsp;</span>
         <span class="me-2" style="font-size:11px; left: -1px; position:relative">{{ cart.total | currency }}</span></a>
       <a *ngIf="userLoginOn" style="color:white; text-decoration:none; cursor: pointer; " (click)="logout()"><i
           class="bi bi-door-closed me-5"></i></a>

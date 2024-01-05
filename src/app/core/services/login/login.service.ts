@@ -39,7 +39,7 @@ export class LoginService {
       message = "Ha habido un problema, intentelo de nuevo";
       } else {
         console.error('Backend retorno el codigo de estado: ' , error.status, error.error);
-        message = error.status + ". " + error.error;
+        message = error.status + ".- Error en Servidor";
       }
     console.log(error);
     return  throwError(()=> new Error( message));

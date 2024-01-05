@@ -3,6 +3,9 @@ import { Human } from "./human.interface";
 export interface Customer{
 
   id: number;
-  human: Human;
+  name: string;
+  lastname: string;
+  phone: string;
+  email: string
 
 }

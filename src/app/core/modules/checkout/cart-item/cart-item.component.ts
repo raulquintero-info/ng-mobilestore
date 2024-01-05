@@ -20,7 +20,7 @@ export class CartItemComponent {
 
     this.cartService.Cart.subscribe({
       next: (cart) => {
-        console.log('header-cart', cart);
+        // console.log('header-cart', cart);
         this.cart = cart;
       }
 
@@ -30,7 +30,7 @@ export class CartItemComponent {
   }
 
   addItem(index: number) {
-    this.cartService.addItem(this.cart.items[index]);
+    this.cartService.addItem(this.cart.orderproducts[index]);
   }
 
   removeItem(index: number) {

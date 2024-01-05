@@ -17,16 +17,16 @@
         <th class="table-dark">id</th>
         <th class="table-dark">Nombre</th>
         <th class="table-dark">Apellido</th>
-        <th class="table-dark">Pais</th>
+        <th class="table-dark">Ususario / Email</th>
         <th class="table-dark">Opciones</th>
       </tr>
     </thead>
     <tbody class="">
       <tr *ngFor="let employee of employees">
         <th>{{ employee.id}}</th>
-        <td>{{ employee.human.name }}</td>
-        <td>{{ employee.human.lastname }}</td>
-        <td>{{ employee.human.country }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.lastname }}</td>
+        <td>{{ employee.username }}</td>
         <td>
           <div class="btn-group">
 

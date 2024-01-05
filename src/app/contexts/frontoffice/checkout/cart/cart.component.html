@@ -2,14 +2,18 @@
 
   <div class="row mb-4">
 
-    <h3>Mi Carrito <span style="font-weight:lighter">( {{ cart.items.length }} artículos)</span></h3>
+    <h3>Mi Carrito <span style="font-weight:lighter">( {{ cart.orderproducts.length }} artículos)</span></h3>
   </div>
 
   <div class="row mt-5 ms-3">
     <div class="col-lg-8">
 
-
-      <app-cart-item [item]="item" [i]="i" *ngFor="let item of cart.items; let i = index"></app-cart-item>
+      <div *ngIf="cart.orderproducts.length==0">
+        <div class="alert alert-warning" role="alert">
+          <i class="bi bi-cart2"></i> Aun no has agregado ningun producto al carrito
+        </div>
+      </div>
+      <app-cart-item [item]="item" [i]="i" *ngFor="let item of cart.orderproducts; let i = index"></app-cart-item>
 
 
     </div>

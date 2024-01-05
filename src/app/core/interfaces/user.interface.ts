@@ -5,9 +5,11 @@ export interface User{
   id: number;
   username: string;
   password: string;
+  name: string;
+  lastname: string;
+  phone: string;
+  email: string;
   session?: string;
-  // human_id?: number;
   rol?: Role;
-  human?: Human;
 
 }
