@@ -33,6 +33,7 @@ export class CartService {
     let temp = localStorage.getItem('cartitems');
     if (temp)
       this.cartitems = JSON.parse(temp);
+
     this.cart.next(this.cartitems);
   }
 
@@ -86,7 +87,7 @@ export class CartService {
 
   addItem(item: Product) {
     this.checkCartItems()
-
+    console.log('checkCartItems', this.cartitems);
     const index = this.cartitems.orderproducts.map(i => i.id).indexOf(item.id);
     if (index < 0) {
       item.quantity = 1;

@@ -35,14 +35,14 @@ export class CartTotalToFinishComponent implements OnInit{
         console.log('Orden Registrada',response);
         this.cartService.restart();
 
+        this.router.navigateByUrl('/resumen-de-la-orden');
       },
       error: response => {
         console.log(response);
-        alert(response.error)
+        alert(response.error.message)
       }
     });
 
-    this.router.navigateByUrl('/resumen-de-la-orden');
   }
 
 }

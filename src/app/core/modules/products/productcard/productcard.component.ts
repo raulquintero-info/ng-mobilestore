@@ -37,6 +37,8 @@ export class ProductcardComponent implements OnInit {
     this.router.navigate(['/producto/' + id]);
   }
 
+  
+
   favoriteAction(productId: number ){
     this.productService.getIsFavoriteByUserId(productId,1).subscribe({next: product => { console.log(this.product); this.product = product}});
     let favoriteProduct = {productId: productId, userId: this.userData.id};

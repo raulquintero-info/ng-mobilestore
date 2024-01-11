@@ -43,8 +43,8 @@
           Agregar Direcciones</span></div>
     </div>
     <div class="ms-2">
-      <div class="window ps-2 pt-2 pb-2" *ngFor="let a of addresses">
-        <div class="d-flex justify-content-between">
+      <div class="window ps-2 pt-2 pb-2 mb-1" *ngFor="let a of addresses">
+        <div class="d-flex justify-content-between ">
 
           <div class="p-8">
 
@@ -55,7 +55,7 @@
             <div>{{a.city}}, {{a.country}}, {{a.zipCode}}</div>
           </div>
           <div class="p-2">
-            <button class="btn btn-outline-danger btn-sm">Eliminar</button>
+            <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
           </div>
         </div>
       </div>
