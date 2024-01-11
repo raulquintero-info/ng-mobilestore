@@ -21,7 +21,7 @@
   <div *ngIf="userData.id>0" class="d-grid gap-2 mt-3 mb-3"><button [disabled]="cart.total<=0"  (click)="clickButton()" class="btn btn-success"
       style="border-radius: 25px;">Continuar</button>
   </div>
-  <div *ngIf="userData.id<1 || userData.id==null" class="d-grid gap-2 mt-3 mb-3"><button [disabled]="cart.total<=0"  (click)="gotoLogin()" class="btn btn-danger"
+  <div *ngIf="userData.id<1 || userData.id==null" class="d-grid gap-2 mt-3 mb-3"><button [disabled]="cart.total<=0"  (click)="gotoLogin()" class="btn btn-primary"
     style="border-radius: 25px;">LogIn</button>
 </div>
 </div>

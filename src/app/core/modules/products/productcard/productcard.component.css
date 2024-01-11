@@ -4,7 +4,7 @@
   /* border: 1px solid red; */
   color: green;
   font-weight: bold;
-  box-shadow: 0px 2px 6px red;
+  box-shadow: 0px 2px 6px #9f2241;
 
 }
 .card-text{
@@ -14,4 +14,6 @@
 .card{
   flex-direction: column;
   border: none;
+  box-shadow: 0px 2px 6px #D4C19C;
+
 }

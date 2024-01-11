@@ -11,12 +11,11 @@
     <div class="text-dark" style="font-size:1.0rem">
       <div *ngIf="!product.isOffer" style="font-weight: bold; font-size: 1.5rem">MX{{ product.price |currency}}</div>
       <div *ngIf="product.isOffer"><span style="text-decoration:line-through; color: gray;"> MX{{ product.price
-          |currency}}</span> <span class="ms-2 badge bg-warning text-dark">Oferta</span><br>
+          |currency}}</span> <span class="ms-2 badge bg-promo text-dark">Oferta</span><br>
         <span style="font-weight: bold; font-size: 1.5rem; color: red"> MX{{ product.offerPrice |currency}}</span>
       </div>
 
-      <button (click)="addItem()" class="btn btn-danger  mt-2 mb-2"
-        style="width: 65%; --bs-btn-padding-y: .20rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .8rem; border-radius: 25px;">
+      <button (click)="addItem()" class="btn btn-success btn-rounded  mt-2 mb-2"style="width: 65%;">
         Agregar
       </button>
 

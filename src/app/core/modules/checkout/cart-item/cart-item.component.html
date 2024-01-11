@@ -16,7 +16,7 @@
     <span *ngIf="item.isOffer" class="price"> {{ (item!.offerPrice! * item!.quantity!) | currency }}</span>
     <div class="btn-group mt-3" role="group" aria-label="Basic example">
 
-      <button class="btn btn-warning rounded-left" [disabled]="item.quantity == 1" (click)="removeItem(i)">
+      <button class="btn btn-promo rounded-left" [disabled]="item.quantity == 1" (click)="removeItem(i)">
         <!-- <i class="bi bi-dash-circle"></i> -->
       -
       </button>
@@ -25,7 +25,7 @@
               color: black;
               border: 0px;
             ">
-      <button class="btn  btn-warning rounded-right" (click)="addItem(i)"><i class="bi bi-plus-circle"></i> </button>
+      <button class="btn  btn-promo rounded-right" (click)="addItem(i)"><i class="bi bi-plus-circle"></i> </button>
     </div><br>
     <button (click)="remove(i)" class="btn btn-sm btn-link">Eliminar</button>
   </div>
