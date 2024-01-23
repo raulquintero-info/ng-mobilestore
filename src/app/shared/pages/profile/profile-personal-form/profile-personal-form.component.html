@@ -3,8 +3,11 @@
 
     <h4>Actualiza tus datos personales</h4><hr>
 
+    <div class="alert alert-info" *ngIf="isUpdated" role="alert">
+      {{message}}
+    </div>
+    <form [formGroup]="customerForm" class=" ms-3">
 
-    <form [formGroup]="loginForm" class=" ms-3">
       <div class="form-outline mb-4">
         <label class="form-label ms-2" for="form3Example3">Nombre</label>
         <input formControlName="name" type="name" id="name" class="form-control form-control-lg"
@@ -37,25 +40,24 @@
       </div>
 
       <div class="form-outline mb-3">
-        <label class="form-label ms-2" for="form3Example4">Telefono</label>
+        <label class="form-label ms-2" for="form3Example4">Telefono (10 digitos)</label>
         <input formControlName="phone" type="phone" id="phone" pattern="^[0-9_-]{10,10}$"
-          class="form-control form-control-lg" placeholder="Ingrese telefono" />
+          class="form-control form-control-lg" required minlenght="10" maxlength="10" placeholder="Ingrese telefono" />
         <div id="phonelHelp" class="form-text" *ngIf="phone.invalid && (phone.dirty || phone.touched)"
           class="text-danger">
           <div *ngIf="phone.errors?.['required']">
             El telefono es requerido
           </div>
-          <div *ngIf="lastname.errors?.['minLength']">
+          <div *ngIf="phone.errors?.['minLength']">
             Debe contener 10 digitos
           </div>
         </div>
       </div>
 
       <div style="text-align:right">
-        <button class="btn btn-primary mb-3">Actualizar</button>
+        <button class="btn btn-primary mb-3" [disabled]="isUpdated" (click)="update()">Actualizar</button>
       </div>
     </form>
-
 
 
 

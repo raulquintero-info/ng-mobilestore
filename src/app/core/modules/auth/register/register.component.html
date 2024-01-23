@@ -25,6 +25,9 @@
                   <div *ngIf="name.errors?.['required']">
                     El nombre debe contener al menos 2 caracteres
                   </div>
+                  <div *ngIf="username.errors?.['forbiddenName']">
+                    Name cannot be Bob.
+                  </div>
                 </div>
               </div>
               <div class="form-outline mt-3 mb-4">
@@ -39,19 +42,17 @@
               </div>
               <!-- Email input -->
               <div class="form-outline mt-3 mb-4">
-                <label class="form-label ms-2" for="form3Example3">Usuario / Email</label>
-                <input formControlName="email" type="email" id="form3Examplee" class="form-control form-control-lg"
+                <label class="form-label ms-2" for="username">Usuario / Email</label>
+                <input formControlName="username" type="username" id="username" class="form-control form-control-lg"
                   placeholder="Ingrese Email" />
-                <div id="emailHelp" class="form-text text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                  <div *ngIf="email.errors?.['required']">
+                <div id="emailHelp" class="form-text text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                  <div *ngIf="username.errors?.['required']">
                     El e-mail es requerido
                   </div>
-                  <div *ngIf="email.errors?.['email']">
+                  <div *ngIf="username.errors?.['email']">
                     El Email debe tener un formato valido.
                   </div>
-                  <div *ngIf="email.errors?.['forbiddenName']">
-                    Name cannot be Bob.
-                  </div>
+
                 </div>
               </div>
 
@@ -78,7 +79,7 @@
               </div> -->
               <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">{{ errorMessage }}</div>
               <div class="text-right  mt-4 pt-2" style="text-align: center">
-                <button type="submit" (click)="login()" class="btn btn-sm btn-danger btn-lg"
+                <button type="submit" (click)="registrar()" class="btn btn-sm btn-danger btn-lg"
                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarse</button>
                   </div>
               <div class="text-right text-lg-start mt-4 pt-2" >

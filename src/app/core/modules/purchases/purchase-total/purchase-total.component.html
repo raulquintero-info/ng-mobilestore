@@ -1,8 +1,14 @@
-<div class="pt-3 mt-1 pb-3 ps-3 pe-3"
-  style="border:1px solid #d1cccc; border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-  <div class="ps-2" style="background-color: {{order.orderstatus.bgColor}};">
-    {{order.orderstatus.name}}<span class="procesing-status" style="color: {{order.orderstatus.dotColor}}">●</span>
+<div class="pt-3 pb-3 ps-3 pe-3 "  style="border:1px solid #c0bfbf; background-color: #D4C19C;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+  <div class="ps-2" style="background-color: {{order.orderstatus.bgColor}}; border: 1px solid {{order.orderstatus.dotColor}} ">
+    {{order.orderstatus.name | titlecase}}<span class="procesing-status"
+      style="color: {{order.orderstatus.dotColor}}">●</span>
   </div>
+  <hr>
+  <div *ngIf="!order.pickup" class="ms-2">Entrega en domicilio<br>
+    <span class="ms-2" style="font-size: .7rem">{{ order.address1 | titlecase }}, {{ order.city |titlecase }}</span>
+  </div>
+  <div *ngIf="order.pickup" class="ms-2">Entrega en tienda</div>
+
   <hr>
   <h5 class="mb-4">Total de la compra</h5>
   <div class="free">
@@ -10,7 +16,7 @@
     <span class="cantidad-detalle">{{ order.total | currency }}</span>
   </div>
   <div class="free">
-    <span class="tipo-envio"><span style="font-size: .8rem">TipoEnvio:</span><br>Entregar en: domicilio</span>
+    <span class="tipo-envio"><span style="font-size: .8rem">Envio:</span></span>
     <span class="cantidad-detalle"> $ 0.00</span>
   </div>
   <div class="free" style="border-top:1px solid black">

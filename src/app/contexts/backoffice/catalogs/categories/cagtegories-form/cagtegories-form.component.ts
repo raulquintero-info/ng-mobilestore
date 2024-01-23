@@ -15,6 +15,7 @@ export class CagtegoriesFormComponent {
   showError: boolean = false;
   categories: Array<Category> = [];
   params: any;
+  wasSaved: boolean = false;
 
 
   url = 'http://localhost:8080/api';
@@ -48,6 +49,7 @@ export class CagtegoriesFormComponent {
             this.category = resp.category;
             this.errorMessage = resp.mensaje;
             this.showError = true;
+            this.wasSaved = true;
           },
           error: error => {
             if (!error.ok && (error.status == 404 || error.status == 500)) {
@@ -68,6 +70,7 @@ export class CagtegoriesFormComponent {
             this.category = resp.category;
             this.errorMessage = resp.mensaje;
             this.showError = true;
+            this.wasSaved = true;
           },
           error: error => {
             if (!error.ok && (error.status == 404 || error.status == 500)) {

@@ -26,6 +26,7 @@ export class ProductsFormComponent {
   categories: any = null;
   brands: any = null;
   txtBtnSaveOrUpdate: string ='';
+  wasSaved: boolean = false;
 
 
   loginForm = this.fb.group({
@@ -84,7 +85,7 @@ export class ProductsFormComponent {
     }
     console.log(this.product);
     this.productService.saveOrUpdate(this.product).subscribe({
-      next: resp => { this.product.id = resp.product.id; this.errorMessage = resp.mensaje; this.showError = true; },
+      next: resp => { this.product.id = resp.product.id; this.errorMessage = resp.mensaje; this.showError = true; this.wasSaved = true; },
       error: error => { this.errorMessage = error; this.showError = true; }
     });
 

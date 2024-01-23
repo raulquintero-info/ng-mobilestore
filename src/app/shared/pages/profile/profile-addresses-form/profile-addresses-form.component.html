@@ -1,11 +1,17 @@
-<h4>Administra tus direcciones postales</h4><hr>
-<button class="btn btn-secondary btn-sm mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i> Agregar Dirección</button>
+<h4>Administra tus direcciones postales </h4>
+<hr>
+<button class="btn btn-secondary btn-sm mb-2" *ngIf="addresses.length<4" data-bs-toggle="modal" data-bs-target="#exampleModal"
+  (click)="cleanForm()"><i class="bi bi-plus-circle"></i> Agregar Dirección</button>
+<div class="alert alert-info" *ngIf="addresses.length>=4" role="alert">
+  <p class="mb-0">Domicilios registrados ({{addresses.length}}/4)</p>
+</div>
+
 
 <div class="container window mt-3">
   <div class="mt-2 mb-3">
 
 
-    <div class="window-address ps-2 pt-2 pb-2 mb-1" *ngFor="let a of addresses">
+    <div class="window-address ps-2 pt-2 pb-2 mb-1" *ngFor="let a of addresses; index as i">
       <div class="d-flex justify-content-between">
 
         <div class="p-8">
@@ -17,7 +23,8 @@
           <div>{{a.city}}, {{a.country}}, {{a.zipCode}}</div>
         </div>
         <div class="p-2">
-          <button class="btn btn-outline-danger btn-sm" (click)="delete(a.id)">Eliminar</button>
+          <button class="btn btn-outline-success btn-sm me-1" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(i)"><i class="bi bi-pencil-square"></i> Editar</button>
+          <button class="btn btn-outline-danger btn-sm" (click)="delete(a.id)"><i class="bi bi-trash"></i> Eliminar</button>
         </div>
       </div>
 

@@ -6,7 +6,7 @@
 
 <div class="row mt-4 ms-3">
 
-  <div *ngIf="showError" class="alert alert-warning">{{ errorMessage }}</div>
+  <div *ngIf="showError" class="alert alert-secondary">{{ errorMessage }}</div>
   <div id="formProduct" *ngIf="showForm">
     <div class="row mt-3 ms-3">
       <div class="col-md-6">
@@ -27,7 +27,7 @@
           <!-- <button class="btn btn-primary mt-4" (click)="saveProduct()">Grabar Registro</button> -->
           <!-- Button trigger modal -->
           <br>
-          <button type="button" [disabled]="!brand.brandname" class="btn btn-primary mt-2" data-bs-toggle="modal"
+          <button type="button" [disabled]="!brand.brandname || wasSaved" class="btn btn-success mt-2" data-bs-toggle="modal"
             data-bs-target="#exampleModal">Grabar Categoria</button>
         </div>
       </div>

@@ -38,7 +38,7 @@ export class CustomersListComponent {
          next: (resp) => {
             this.errorMessage = 'Cliente Eliminado';
             this.showError = true;
-            console.log(resp);
+            console.log('respuesta Server', resp);
             this.getCustomers()},
          error: error => {
            this.errorMessage = 'Es posible que es registro ya no exista';

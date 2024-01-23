@@ -7,7 +7,7 @@
 
     </div>
 
-
+    <!-- <div class="alert alert-secondary">mensajes de error</div> -->
     <div class="row mt-1 ms-3">
 
 
@@ -34,7 +34,7 @@
               <td>{{ p.orderstatus.name| titlecase}}</td>
               <td style="text-align:center">
 
-                <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/admin/orden/', p.id ]"
+                <button class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/admin/orden/', p.id ]"
                   title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i> Ver Detalles</button>
 
               </td>

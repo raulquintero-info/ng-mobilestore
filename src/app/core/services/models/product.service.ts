@@ -15,7 +15,7 @@ urlBase =  "http://localhost:8080/api/productos";
 constructor(private http: HttpClient) { }
 
 getAll(page: number = 1):Observable<any>{ return this.http.get(this.urlBase + '-nuevos'); }
-getByCategoryId(id: number = 1, userId: number = 0):Observable<any>{console.log('categoryId',id); console.log(this.urlBase + '/categoria/' + id);
+getByCategoryId(id: number = 1, userId: number = 0):Observable<any>{console.log('categoryId',id); console.log(this.urlBase + '/categoria/' + id + '/usuario' + 1);
 return this.http.get(this.urlBase + '/categoria/' + id + '/usuario/' + userId); }
 getAllOffers(page: number = 1):Observable<any>{ return this.http.get(this.urlBase + '-oferta'); }
 getById(id: number = 0):Observable<any>{ return this.http.get(this.urlBase + '/' + id); }

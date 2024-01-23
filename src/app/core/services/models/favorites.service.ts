@@ -31,13 +31,27 @@ export class FavoritesService {
   }
 
 
-  getAll() {
-    if (this.userData == null) return;
-    let userId = this.userData.id;
+  getAll(id: number = 0) {
+    console.log('userId recibido', id);
+
+    let userId = 0;
+    if(id>0){
+      userId = id;
+    } else {
+      if (this.userData == null) return;
+      userId = this.userData.id;
+    }
 
     this.favorites = [];
     this.http.get<FavoriteProduct[]>(this.urlBase + '/' + userId)
-      .subscribe({ next: resp => { console.log(resp);this.setFavoritesCart(resp);}})
+      .subscribe({ next: resp => {
+        console.log('userId', userId);
+        console.log('obteniendo favoritos (get): ',resp);this.setFavoritesCart(resp);
+      },
+      error: resp=>{
+        console.log('error', resp)
+      }
+    })
   }
 
   add(favoriteProduct: FavoriteProduct): Observable<any> {

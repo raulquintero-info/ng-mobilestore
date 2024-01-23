@@ -1,4 +1,5 @@
-<div class="row row-item  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
+<div class="row bg-light  pe-2 pt-3 pb-3" style="border-left: 1px solid #D4C19C; border-right: 1px solid #D4C19C;">
+  <div class="container"><hr *ngIf="i>0"></div>
   <div class="col-lg-3"><img [src]="item.image" width="120" alt=""></div>
   <div class="col-lg-3">{{ item.brand?.brandname | uppercase }}<br>{{ item.name | titlecase }}<br>
 
@@ -29,4 +30,5 @@
     </div><br>
     <button (click)="remove(i)" class="btn btn-sm btn-link">Eliminar</button>
   </div>
+
 </div>

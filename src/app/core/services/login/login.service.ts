@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from './User.interface';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { FavoritesService } from '../models/favorites.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean> (false);
-  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({username: "no user", rol:{ id: 0, name: "no rol"}} as User);
+  currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({username: "no user",  rol:{ id: 0,  name: "no rol"}} as User);
 
-  constructor(private http: HttpClient, private router: Router,private cookies: CookieService) { }
+  constructor(private http: HttpClient, private router: Router,private cookies: CookieService, private favoritesService: FavoritesService) { }
 
   login(credentials: LoginRequest): Observable<User>{
     console.log(credentials)
@@ -26,6 +27,8 @@ export class LoginService {
         sessionStorage.setItem('token', userData.token ? userData.token : '');
         sessionStorage.setItem('user',JSON.stringify(userData));
         sessionStorage.setItem('userLoginOn', JSON.stringify(true))
+        this.favoritesService.getAll(userData.id);
+
       }),
       catchError(this.handleError)
     );

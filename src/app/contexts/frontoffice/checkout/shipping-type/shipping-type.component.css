@@ -16,3 +16,11 @@ input:checked {
   font-size: 1.5rem;
   outline: 2px solid #ff83c6;
 }
+.header-list{
+  background-color: #fbf3e9;
+  height: 66px;
+  border-top: 1px solid #D4C19C;
+  border-left: 1px solid #D4C19C;
+  border-right: 1px solid #D4C19C;
+  border-bottom: 1px solid #D4C19C;
+}

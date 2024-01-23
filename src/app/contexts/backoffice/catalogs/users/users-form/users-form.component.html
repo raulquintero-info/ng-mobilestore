@@ -1,6 +1,7 @@
 <div class="row ms-3 mt-3 mb-4">
 
-  <h3>Usuarios</h3><hr>
+  <h3>Usuarios</h3>
+  <hr>
 </div>
 
 <div class="row mt-4 ms-3">
@@ -25,18 +26,29 @@
         </div>
 
         <div class="mb-3">
-          <label for="formPassword" class="form-label">Contraseña</label>
-          <input class="form-control" [(ngModel)]="user.password" type="password" id="formPassword" placeholder="*****">
+          <label for="formName" class="form-label">Nombre</label>
+          <input class="form-control" type="text" [(ngModel)]="user.name" disabled id="formName">
         </div>
+
+        <div class="mb-3">
+          <label for="formApellido" class="form-label">Apellido</label>
+          <input class="form-control" type="text" [(ngModel)]="user.lastname" disabled id="formApellido">
+        </div>
+
+
       </div>
       <div class="col-md-6 ">
 
         <div class="col-md-12 pe-3" astyle="width: 100%;height:300px; border:1px rgb(139, 138, 138) solid">
-
+          <div class="mb-3">
+            <label for="formPassword" class="form-label">Contraseña</label>
+            <input class="form-control" [(ngModel)]="user.password" type="password" id="formPassword"
+              placeholder="*****">
+          </div>
           <!-- <button class="btn btn-primary mt-4" (click)="saveProduct()">Grabar Registro</button> -->
           <!-- Button trigger modal -->
           <br>
-          <button type="button" (click)="save()" class="btn btn-primary mt-2">Actualizar Contraseña</button>
+          <button type="button" (click)="save()" class="btn btn-success mt-2">Actualizar Contraseña</button>
         </div>
       </div>
 
@@ -44,4 +56,4 @@
   </div>
 
 
-  </div>
+</div>

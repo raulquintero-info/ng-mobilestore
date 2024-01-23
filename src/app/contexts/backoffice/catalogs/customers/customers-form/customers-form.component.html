@@ -5,7 +5,10 @@
 
 <div class="row mt-3 ms-3 mb-5">
 
-  <div *ngIf="showError" class="alert alert-warning">{{ errorMessage }}</div>
+  <div *ngIf="showError" class="alert alert-light alert-dismissible fade show">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <div id="formProduct" *ngIf="showForm">
     <div class="row mt-3 ms-3">
       <div class="col-md-6">
@@ -30,11 +33,11 @@
         </div>
         <div class="mb-3">
           <label for="formPrice" class="form-label">Usuario / Email</label>
-          <input class="form-control" [disabled]="customer.id>0" type="text" [(ngModel)]="customer.username" id="email">
+          <input class="form-control" [disabled]="customer.id<0" type="text" [(ngModel)]="customer.username" id="email">
         </div>
         <br>
-        <button type="button" (click)="saveOrUpdate()" class="btn btn-primary mt-2"><i class="bi bi-floppy"></i> Grabar</button>
-        <button *ngIf="customer.id > 0 " (click)="gotoUser(customer.id)" type="button" class="btn btn-primary mt-2 ms-4"><i class="bi bi-intersect"></i> Generar Password</button>
+        <!-- <button *ngIf="customer.id > 0 " (click)="gotoUser(customer.id)" type="button" class="btn btn-secondary mt-2 me-4"><i class="bi bi-intersect"></i> Generar Password</button> -->
+        <button type="button" (click)="saveOrUpdate()" [disabled]="isSavedSuccess" class="btn btn-success mt-2 "><i class="bi bi-floppy"></i> Grabar</button>
       </div>
 
       <div *ngIf="customer.id>0" class="col-md-6 ">

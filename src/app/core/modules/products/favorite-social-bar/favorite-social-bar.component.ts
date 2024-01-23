@@ -41,18 +41,20 @@ export class FavoriteSocialBarComponent {
 
   favoriteAction(productId: number){
     // this.favoritesService.checkFavoritesCart();
-    this.productService.getIsFavoriteByUserId(productId,1).subscribe({next: product => { console.log(this.product); this.product = product}});
+    this.productService.getIsFavoriteByUserId(productId,1).subscribe({
+      next: product => {
+        this.product = product
+      }
+    });
     console.log('userdata: ',this.userData);
     let favoriteProduct = {productId: productId, userId: this.userData.id};
     if (!this.product.isFavorite ) {
       this.favoriteClass = "btn-danger";
-      this.favoritesService.add(favoriteProduct).subscribe({next: product => {  this.product = product.favoriteProduct}});
-
+      this.favoritesService.add(favoriteProduct).subscribe({next: product => {this.product = product.favoriteProduct}});
     }
     else {
       this.favoriteClass = "btn-outline-danger"
       this.favoritesService.remove(favoriteProduct);
-
     }
     console.log("end" ,this.product);
   }

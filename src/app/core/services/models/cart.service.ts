@@ -13,7 +13,7 @@ export class CartService {
   urlBase = "http://localhost:8080/api/checkout";
 
   item: Product = { id: 0, price: 0, isOffer: false, offerPrice: 0};
-  cartitems: Cart = { orderproducts: [], total: 0, totalAbs: 0, pickup: 0, user: {} as User};
+  cartitems: Cart = { orderproducts: [], address1: '', total: 0, totalAbs: 0, pickup: 0, user: {} as User};
   private cart: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(this.cartitems);
 
   constructor(private http: HttpClient) {
@@ -38,7 +38,7 @@ export class CartService {
   }
 
   restart(){
-    this.cartitems = { orderproducts: [], total: 0, totalAbs: 0, pickup: 0, user: {} as User};
+    this.cartitems = { orderproducts: [], address1: '', total: 0, totalAbs: 0, pickup: 0, user: {} as User};
     this.cart.next(this.cartitems);
     localStorage.removeItem('cartitems');
   }

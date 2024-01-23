@@ -27,7 +27,7 @@ export class CustomersFormComponent {
   params: any;
   addresses: Address[] = [];
   public userLogged?: UserLogged;
-
+  isSavedSuccess: boolean = false
 
   url = 'http://localhost:8080/api';
 
@@ -38,6 +38,7 @@ export class CustomersFormComponent {
     private customerService: CustomerService,
     private loginService: LoginService,
     private addressService: AddressService
+
     ) { }
 
   ngOnInit() {
@@ -97,7 +98,8 @@ export class CustomersFormComponent {
           console.log(resp);
           this.customer.id=resp.customer.id;
           this.errorMessage = resp.mensaje;
-          this.showError = true;},
+          this.showError = true;
+          this.isSavedSuccess = true},
         error: error => { console.log(error);this.errorMessage = error.error.message; this.showError = true}
       });
 

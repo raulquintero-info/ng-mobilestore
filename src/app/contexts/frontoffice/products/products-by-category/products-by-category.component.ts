@@ -40,13 +40,13 @@ export class ProductsByCategoryComponent implements OnInit {
 
     this.productService.getByCategoryId(this.params.params.id, this.userData.id).subscribe({ next: products => { this.products = products; } });
 
-
+    console.log('productos', this.products);
 
     // this.getProducts(this.params.params.id);
   }
 
   getProducts(id: number){
-    fetch(this.url + '/productos/categoria/' + id)
+    fetch(this.url + '/productos/categoria/' + id + '/usuario/' + 1)
     .then((response) => response.json())
     .then(result => {
       if (result.error) {

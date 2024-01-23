@@ -13,6 +13,13 @@
           <i class="bi bi-cart2"></i> Aun no has agregado ningun producto al carrito
         </div>
       </div>
+      <div *ngIf="cart.orderproducts.length>0"class="row">
+        <div class="container header-item-list">
+          <br>
+            <img src="/assets/images/shipping.png" height="55"  alt=""> Envío a domicilio, o puedes recoger directo en tienda.
+          <div class="mt-3 ps-2" style="border-top: 1px solid #D4C19C; font-size: 14px" >El coste del envio es gratis en este pedido</div>
+        </div>
+      </div>
       <app-cart-item [item]="item" [i]="i" *ngFor="let item of cart.orderproducts; let i = index"></app-cart-item>
 
 

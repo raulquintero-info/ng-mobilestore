@@ -41,14 +41,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NavbarModule,
     FrontofficeModule,
-    BackofficeModule,
+    // BackofficeModule,
     AuthModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule
   ],
   exports:[
-    PhonePipe
+    PhonePipe,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

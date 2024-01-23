@@ -4,6 +4,7 @@ import { CartService } from '../../../services/models/cart.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login/login.service';
 import { User } from 'src/app/core/services/login/User.interface';
+import swal from'sweetalert2';
 
 @Component({
   selector: 'app-cart-total-to-finish',
@@ -34,8 +35,35 @@ export class CartTotalToFinishComponent implements OnInit{
       next: response=>{
         console.log('Orden Registrada',response);
         this.cartService.restart();
+        const swalWithBootstrapButtons = swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-warning"
+          },
+          buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+      title: "La Orden ha sido enviada",
+      text: "Total de la Orden: $" + this.cart.total.toFixed(2) ,
+      imageUrl: '/assets/icons/flying_cart.png',
+      // icon: "success",
+      showCancelButton: false,
+      confirmButtonText: "Continuar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        console.log('enviar a catalogo principal');
+        this.router.navigateByUrl('/');
 
-        this.router.navigateByUrl('/resumen-de-la-orden');
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === swal.DismissReason.cancel
+      ) {
+        console.log('ver carrito');
+      }
+    });
+        // this.router.navigateByUrl('/resumen-de-la-orden');
       },
       error: response => {
         console.log(response);

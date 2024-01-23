@@ -91,7 +91,8 @@ export class ProductsListComponent implements OnInit {
       this.productService.deleteById(id).subscribe({
         next: (resp) => {
           this.errorMessage = resp.message;
-          // this.showError = true; this.getProducts();
+          this.showError = true; 
+          this.getProducts(this.page);
         },
         error: error => { this.errorMessage = error; this.showError = true }
       });

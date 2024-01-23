@@ -15,6 +15,7 @@ export class BrandsFormComponent {
   showError: boolean = false;
   categories: Array<Brand> = [];
   params: any;
+  wasSaved: boolean = false;
 
 
   url = 'http://localhost:8080/api';
@@ -47,6 +48,7 @@ export class BrandsFormComponent {
             this.brand = resp.brand;
             this.errorMessage = resp.mensaje;
             this.showError = true;
+            this.wasSaved = true;
           },
           error: error => {
             if (!error.ok && (error.status == 404 || error.status == 500)) {
@@ -65,8 +67,9 @@ export class BrandsFormComponent {
           next: resp => {
             console.log(resp);
             this.brand = resp.brand;
-            this.errorMessage = "Marca Actualizado";
+            this.errorMessage = 'Marca Actualizado';
             this.showError = true;
+            this.wasSaved =true;
           },
           error: error => {
             if (!error.ok && (error.status == 404 || error.status == 500)) {

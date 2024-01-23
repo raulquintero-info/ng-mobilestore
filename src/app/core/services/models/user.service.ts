@@ -13,15 +13,16 @@ export class UserService {
 
   constructor(private http: HttpClient) {
 
-    let temp: any = sessionStorage.getItem('user');
-    this.userData = JSON.parse(temp);
+    // let temp: any = sessionStorage.getItem('user');
+    // this.userData = JSON.parse(temp);
+    this.get();
   }
 
+  get(){let temp: any = sessionStorage.getItem('user');this.userData = JSON.parse(temp);}
   getAll(page: number = 0): Observable<any> { return this.http.get(this.urlBase ); }
   getById(id: number = 0): Observable<any> { return this.http.get(this.urlBase + '/' + id); }
 
-
-
+  update(user: User): Observable<any> { return this.http.put(this.urlBase, user); }
 
 
 

@@ -4,7 +4,6 @@
 
     <div class="d-flex">
       <h3>Historial de Compras</h3>
-
     </div>
 
 
@@ -32,13 +31,18 @@
             <td style="text-align:center">
 
               <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/mi-compra/', p.id ]"
-                title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i> Ver Detalles</button>
+                title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i> Ver Detalles [{{ p.id }}]</button>
 
             </td>
           </tr>
         </tbody>
       </table>
 
+      <div *ngIf="orders.length == null || orders.length < 1" class="alert alert-warning"><i class="bi bi-cart"></i> Aún no has hecho ninguna compra</div>
+
+      <div *ngIf="orders.length == null || orders.length < 1" class="row mt-5 mb-3">
+        <img src="/assets/images/ads/adLaptopsEne.png" routerLink="/productos/por-categoria/3" style="width:100%; cursor: pointer" alt="">
+      </div>
 
       </div>
       <div>

@@ -1,21 +1,24 @@
-<div class="row row-product  mt-2 pe-2 pt-3 pb-3" style=" border: 1px solid #d1cccc; border-radius: 8px;">
-  <div class="col-lg-2 text-center" ><img [src]="product.image" width="80" alt=""><br>Codigo: {{ product.id}}</div>
-  <div class="col-lg-6">{{ product.brand?.brandname | uppercase }}<br>{{ product.name | titlecase }}<br>
+<div class="row row-product  pe-2 pt-3 pb-3" >
+  <div class="container">
+    <hr *ngIf="i>0">
+  </div>
+  <div class="col-lg-2 text-center" ><img [src]="item.image" width="80" alt=""><br>Codigo: {{ item.productId}}</div>
+  <div class="col-lg-6">{{ item.brand | uppercase }}<br>{{ item.name | titlecase }}<br>
 
   </div>
   <div class="col-lg-3" style="text-align:right">
-    <span *ngIf="!product.isOffer" class="price"> {{ product.price | currency }}</span>
-    <div *ngIf="product.isOffer"><span style="text-decoration:line-through; color: gray;"> {{ product.price
+    <span *ngIf="!item.isOffer" class="price"> {{ item.price | currency }}</span>
+    <div *ngIf="item.isOffer"><span style="text-decoration:line-through; color: gray;"> {{ item.price
         |currency}}</span>
         <!-- <span class="ms-2 badge bg-danger text-light">PROM</span><br> -->
-      <span style="font-weight: bold; font-size: 1.0rem; color: red">| {{ product.offerPrice |currency}}</span>
+      <span style="font-weight: bold; font-size: 1.0rem; color: red">| {{ item.offerPrice |currency}}</span>
     </div>
 
   </div>
   <!-- <div class="col-lg-3">
     Precio<br>
-    <span *ngIf="!product.isOffer" class="price"> {{ (item.price) | currency }}</span>
-    <span *ngIf="product.isOffer" class="price"> {{ (item.price) | currency }}</span><br>
+    <span *ngIf="!item.isOffer" class="price"> {{ (item.price) | currency }}</span>
+    <span *ngIf="item.isOffer" class="price"> {{ (item.price) | currency }}</span><br>
 
     </div> -->
     <div class="col-lg-1 text-left" role="group">

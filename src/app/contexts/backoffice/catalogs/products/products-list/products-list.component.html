@@ -55,7 +55,7 @@
             <td>{{ c.brand?.brandname| titlecase}}</td>
             <td><span [ngClass]="c.isOffer ? 'old-price' : 'current-price' ">{{ c.price | currency}}</span> <br> <span
                 *ngIf="c.isOffer" class="offer-price">{{ c.offerPrice | currency}}</span> </td>
-            <td><span *ngIf="c.isOffer" class="badge bg-danger">En Oferta</span></td>
+            <td><span *ngIf="c.isOffer" class="badge bg-promo text-dark">En Oferta</span></td>
             <td>{{ c.quantity }}</td>
             <td>{{ c.category?.name}}</td>
             <td style="text-align:center">

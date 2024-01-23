@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/core/interfaces/product.interface';
 import { LoginService } from 'src/app/core/services/login/login.service';
 import { LoginRequest } from 'src/app/core/services/login/loginRequest.interface';
-import { FavoritesService } from 'src/app/core/services/models/favorites.service';
+import { UserService } from 'src/app/core/services/models/user.service';
 
 
 @Component({
@@ -11,13 +12,15 @@ import { FavoritesService } from 'src/app/core/services/models/favorites.service
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   errorMessage: string = '';
   showError: boolean = false;
+  public favoriteProducts: Product[] = [];
+  public products: Product[] = [];
 
   loginForm = this.fb.group({
-    email:['customer@server.com', [Validators.required, Validators.email]],
+    username:['customer@server.com', [Validators.required, Validators.email]],
     password:['',Validators.required]
 ,  })
 
@@ -25,25 +28,31 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private favoritesService: FavoritesService){
+    private userService: UserService){
 
   }
 
-  get email(){
-    return this.loginForm.controls.email;
+  ngOnInit(): void {
+
+
+  }
+
+  get username(){
+    return this.loginForm.controls.username;
   }
   get password(){
     return this.loginForm.controls.password;
   }
 
   login(){
+    this.showError = false;
 
     if (this.loginForm.valid){
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           console.log(userData);
           if(userData.rol.name == 'admin') this.router.navigateByUrl('/dashboard');
-          else this.router.navigateByUrl('/');
+            else this.router.navigateByUrl('/');
         },
         error: error => {
           console.log(error);

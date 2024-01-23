@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Address } from 'src/app/core/interfaces/address.interface';
+import { UserLogged } from 'src/app/core/interfaces/userLogged.interface';
 import { User } from 'src/app/core/services/login/User.interface';
 import { AddressService } from 'src/app/core/services/models/address.service';
 import { UserService } from 'src/app/core/services/models/user.service';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/core/services/models/user.service';
 export class ProfileComponent {
   userData: User = { id: 0, rol: { id: 0, name: 'none' } } as User;
   addresses: Address[] = [];
-  userLogged: any;
+  userLogged: UserLogged = {} as UserLogged;
 
 
   constructor(private userService: UserService, private addressService: AddressService) {

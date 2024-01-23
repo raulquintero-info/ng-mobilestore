@@ -36,6 +36,14 @@ export class ProfileAddressesFormComponent implements OnInit{
       })
   }
 
+  cleanForm(){
+    this.address = {} as Address;
+  }
+  edit(i: number){
+    console.log(this.addresses[i]);
+    this.address = this.addresses[i];
+  }
+
   save(){
     let user=this.userData;
     this.address.user = user;
@@ -44,6 +52,7 @@ export class ProfileAddressesFormComponent implements OnInit{
     .subscribe({
       next: resp => {
         console.log(resp);
+        this.address={} as Address;
         this.getAddresses();
       }
     })

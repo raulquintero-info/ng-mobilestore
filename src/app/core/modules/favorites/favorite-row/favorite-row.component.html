@@ -1,12 +1,12 @@
 <div class="row row-item  mt-2 pe-2 pt-3 pb-3" id="{{product.id}}" >
-  <div class="col-lg-2"><img classe="img-thumbnail"[src]="product.image" width="120" alt="">{{ product.id }} - {{ i }}</div>
-  <div class="col-lg-6"><a [routerLink]="['/producto', product.id]" routerLinkActive="router-link-active" >{{ product.brand?.brandname | uppercase }}<br>{{ product.name | titlecase }}</a><br>
+  <div class="col-lg-2"><img classe="img-thumbnail"[src]="product.image" width="120" alt=""> </div>
+  <div class="col-lg-6"><a [routerLink]="['/producto', product.id]" routerLinkActive="router-link-active" >{{ product.brand?.brandname | uppercase }} [{{ product.id }}]<br>{{ product.name | titlecase }}</a><br>
 
   </div>
   <div class="col-lg-2">
     <span *ngIf="!product.isOffer" class="price"> <h4>MX {{ product.price | currency }}</h4></span>
     <div *ngIf="product.isOffer"><span style="text-decoration:line-through; color: gray;"> MX{{ product.price
-        |currency}}</span> <span class="ms-2 badge bg-warning text-dark">Oferta</span><br>
+        |currency}}</span> <span class="ms-2 badge bg-promo text-dark">Oferta</span><br>
         <span style="font-weight: bold; font-size: 1.5rem; color: red"> MX{{ product.offerPrice |currency}}</span>
     </div>
     <div>
@@ -15,7 +15,7 @@
 
   </div>
   <div class="col-lg-2 ">
-    <button class="btn btn-primary" (click)="addItem()" type="button"
+    <button class="btn btn-success" (click)="addItem()" type="button"
         style="width: 65%; --bs-btn-padding-y: .320rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: 12px; border-radius: 25px;"><i class="bi bi-cart4 " ></i> Agregar</button>
     <br>
   </div>

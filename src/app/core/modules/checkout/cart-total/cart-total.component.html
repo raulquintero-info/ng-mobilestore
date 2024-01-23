@@ -1,5 +1,5 @@
-<div class="pt-3 mt-1 pb-3 ps-3 pe-3"
-  style="border:1px solid #d1cccc;  border-radius: 8px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+<div class="pt-3  pb-3 ps-3 pe-3"
+  style="border:1px solid #c0bfbf; background-color: #D4C19C;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
   <h5 class="mb-4">Detalle de la compra</h5>
   <div class="free">
@@ -22,6 +22,6 @@
       style="border-radius: 25px;">Continuar</button>
   </div>
   <div *ngIf="userData.id<1 || userData.id==null" class="d-grid gap-2 mt-3 mb-3"><button [disabled]="cart.total<=0"  (click)="gotoLogin()" class="btn btn-primary"
-    style="border-radius: 25px;">LogIn</button>
+    style="border-radius: 25px;">Continuar</button>
 </div>
 </div>

@@ -15,8 +15,8 @@ export class HomeComponent {
   params: any;
   public products: Product[] = [];
   public favoriteProducts: Product[] = [];
-  private showError: boolean = false;
-  private errorMessage: string = '';
+  public showError: boolean = false;
+  public errorMessage: string = '';
   url: string = "http://localhost:8080/api";
 
   constructor(private productService: ProductService,private route: ActivatedRoute,private categoryService: CategoryService,private favoritesService: FavoritesService){}
@@ -32,9 +32,22 @@ export class HomeComponent {
       next:(favorites) => {
         this.favoriteProducts = favorites;
         // this.products = favorites;
-      }});
+      }
+    });
+    this.favoritesService.getAll();
 
-    this.productService.getAll(1).subscribe({next: products => {this.products = products.content;}});
+
+
+    this.productService.getAll(1).subscribe({
+      next: products => {
+        this.products = products.content;
+      },
+      error: resp => {
+        console.table(resp.name);
+        this.errorMessage = resp.name
+        this.showError = true
+      }
+    });
     console.log('loading favorites')
     this.favoritesService.getAll();
 
