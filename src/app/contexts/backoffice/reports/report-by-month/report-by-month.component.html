@@ -1,0 +1,68 @@
+<div class="container mb-5">
+
+  <div class="row mb-4">
+
+    <div class="d-flex justify-content-between ">
+
+      <div class="p-8"><h3>Historial de Compras </h3></div>
+      <div class="p-2 pe-4">
+        <button class="btn btn-promo"><i class="bi bi-filetype-pdf"></i> Descargar Reporte</button>
+      </div>
+    </div>
+
+    <!-- <div class="alert alert-secondary">mensajes de error</div> -->
+    <div class="row mt-1 ms-3">
+
+
+      <div class="table-responsive">
+
+        <table id='table' datatable class="table table-light  table-striped">
+          <thead>
+            <tr>
+
+              <th class="table-dark">Fecha</th>
+              <th class="table-dark">Cliente</th>
+              <th class="table-dark">Total</th>
+              <th class="table-dark">Entregar en</th>
+              <th class="table-dark">Status</th>
+              <th class="table-dark">Opciones</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let p of orders">
+              <td>{{p.date | date:'medium'}}</td>
+              <td>{{p.user.name + " " + p.user.lastname | titlecase}}</td>
+              <td>{{ p.total | currency }}</td>
+              <td class="text-center"><span *ngIf="p.pickup">Tienda</span><span *ngIf="!p.pickup"  >Domicilio Cliente</span></td>
+              <td>{{ p.orderstatus.name| titlecase}}</td>
+              <td style="text-align:center">
+
+                <button class="btn btn-sm btn-success" data-bs-toggle="tooltip" data-bs-placement="right" [routerLink]="['/admin/orden/', p.id ]"
+                  title="Ver Detalles"><i class="bi bi-list-columns" alt="Ver Detalles"></i> Ver Detalles</button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

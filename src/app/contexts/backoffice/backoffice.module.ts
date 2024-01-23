@@ -21,6 +21,7 @@ import { UsersListComponent } from './catalogs/users/users-list/users-list.compo
 import { UsersFormComponent } from './catalogs/users/users-form/users-form.component';
 import { RolesListComponent } from './catalogs/roles/roles-list/roles-list.component';
 import { RolesFormComponent } from './catalogs/roles/roles-form/roles-form.component';
+import { ReportByMonthComponent } from './reports/report-by-month/report-by-month.component';
 
 
 
@@ -44,6 +45,7 @@ import { RolesFormComponent } from './catalogs/roles/roles-form/roles-form.compo
     UsersFormComponent,
     RolesListComponent,
     RolesFormComponent,
+    ReportByMonthComponent
   ],
   imports: [
     CommonModule,

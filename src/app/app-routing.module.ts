@@ -36,6 +36,7 @@ import { ProfileComponent } from './shared/pages/profile/profile/profile.compone
 import { ProfilePersonalFormComponent } from './shared/pages/profile/profile-personal-form/profile-personal-form.component';
 import { ProfileAddressesFormComponent } from './shared/pages/profile/profile-addresses-form/profile-addresses-form.component';
 import { ProfileAccountFormComponent } from './shared/pages/profile/profile-account-form/profile-account-form.component';
+import { ReportByMonthComponent } from './contexts/backoffice/reports/report-by-month/report-by-month.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -96,6 +97,8 @@ const routes: Routes = [
   {path: 'admin/sistema/usuarios', component: UsersListComponent},
   {path: 'admin/sistema/usuarios/editar/:id', component: UsersFormComponent},
   // {path: 'admin/sistema/usuarios/nuevo', component: UsersFormComponent},
+  {path: 'admin/reportes/por-mes', component: ReportByMonthComponent},
+
 
   {path: '**', component: NotfoundComponent},
 ];
