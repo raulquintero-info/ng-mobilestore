@@ -39,7 +39,7 @@ export class LoginService {
     let message= "";
     if (error.status==0){
        console.error('Se ha producido un error: ',error.error);
-      message = "Ha habido un problema, intentelo de nuevo";
+      message = "El servidor no esta disponible, intentelo mas tarde.";
       } else {
         console.error('Backend retorno el codigo de estado: ' , error.status, error.error);
         message = error.status + ".- Error en Servidor";

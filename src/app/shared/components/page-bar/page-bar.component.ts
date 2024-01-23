@@ -41,7 +41,7 @@ export class PageBarComponent implements OnInit {
   createRange(nPages: number , actualPg: number, totalPg: number ){
 
       let arrayTemp = new Array();
-      for (let i = actualPg -4; i< (actualPg + 5); i++ ){
+      for (let i = actualPg -2; i< (actualPg + 3); i++ ){
         if (i>0  && i<= totalPg) arrayTemp.push(i);
       }
 
