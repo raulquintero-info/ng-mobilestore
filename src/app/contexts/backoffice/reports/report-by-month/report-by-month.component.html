@@ -1,17 +1,19 @@
-<div class="container mb-5">
+<div class="container mb-5"  #htmlData>
 
   <div class="row mb-4">
 
     <div class="d-flex justify-content-between ">
 
-      <div class="p-8"><h3>Historial de Compras </h3></div>
+      <div class="p-8"><h3>Reporte de Ventas Mensual </h3></div>
       <div class="p-2 pe-4">
-        <button class="btn btn-promo"><i class="bi bi-filetype-pdf"></i> Descargar Reporte</button>
+        <button (click)="downloadPDF()" class="btn btn-promo"  #btnPreview><i class="bi bi-filetype-pdf">
+        </i> Descargar Reporte <div class="spinner-border spinner-border-sm" [ngClass]="setSpinner" role="status"></div>
+      </button>
       </div>
     </div>
 
     <!-- <div class="alert alert-secondary">mensajes de error</div> -->
-    <div class="row mt-1 ms-3">
+    <div class="row mt-1 ms-3" >
 
 
       <div class="table-responsive">
