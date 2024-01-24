@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError, BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
+import { Order } from '../../interfaces/order.interface';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
@@ -21,6 +22,7 @@ getById(id: number = 0):Observable<any>{ return this.http.get(this.urlBase + '/'
 getByUserId(id: number = this.userData.id):Observable<any>{ return this.http.get(this.urlBase + '/usuario/' + id); }
 
 deleteById(id: number = 0):Observable<any>{ return this.http.delete(this.urlBase + '/' + id); }
+update(order: Order):Observable<any>{ return this.http.put(this.urlBase + '/update-status', order ); }
 
 // saveOrUpdate(entity: Customer):Observable<any>{
 //   console.log("service:>>", entity);

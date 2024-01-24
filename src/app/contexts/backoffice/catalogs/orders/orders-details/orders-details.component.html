@@ -19,7 +19,7 @@
         <div class="input-group mb-3">
           <label class="input-group-text" for="inputGroupSelect01">Status</label>
 
-          <select class="form-select" [(ngModel)]="order.orderstatus.id" id="inputGroupSelect01">
+          <select class="form-select" [(ngModel)]="order.orderstatus.id" #status (change)="setStatus($event)" id="inputGroupSelect01">
             <!-- <option selected>Choose...</option> -->
             <!-- <option value="1" selected>Nuevo</option> -->
             <option *ngFor="let b of orderStatus" value="{{ b.id }}">{{ b.name }}</option>

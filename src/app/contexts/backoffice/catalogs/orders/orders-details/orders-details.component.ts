@@ -4,6 +4,7 @@ import { Order } from 'src/app/core/interfaces/order.interface';
 import { Orderstatus } from 'src/app/core/interfaces/orderstatus.interface';
 import { OrderService } from 'src/app/core/services/models/order.service';
 import { OrderStatusService } from 'src/app/core/services/models/orderstatus.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-orders-details',
@@ -25,7 +26,54 @@ export class OrdersDetailsComponent implements OnInit{
     this.getOrderById(this.params.params.id);
     // this.getOrderById(2);
     this.getAllOrderStatus();
+
   }
+
+  setStatus(opt: any){
+
+    console.log(this.order, opt.target.value );
+    this.order.orderstatus.id = opt.target.value;
+    this.orderService.update(this.order)
+    .subscribe({
+      next: (response) => {
+        console.log('orders: ', response);
+        this.order = response;
+        const swalWithBootstrapButtons = swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-warning"
+          },
+          buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+          title: "Se ha Actualizado el Status de la Orden",
+          text: " Status: " + this.order.orderstatus.name,
+          imageUrl: '/assets/icons/flying_cart.png',
+          // icon: "success",
+          showCancelButton: false,
+          confirmButtonText: "Aceptar",
+          cancelButtonText: "Cancelar",
+          reverseButtons: true
+        }).then((result: any) => {
+          if (result.isConfirmed) {
+            console.log('click Aceptar');
+
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === swal.DismissReason.cancel
+          ) {
+            console.log('ver carrito');
+          }
+        });
+      },
+      error: error=>{
+        // this.getOrderById(this.params.params.id);
+
+        console.log('error: ', error);
+      }
+    });
+  }
+
 
   getOrders(page: number){
     page = Number(page);
@@ -34,12 +82,13 @@ export class OrdersDetailsComponent implements OnInit{
       next: (response) => {
         console.log('orders: ', response);
         this.orders = response;
+
       },
       error: error=>{
         console.log('error: ', error);
       }
-    }
-    )};
+    });
+  }
 
   getOrderById(id: number){
     this.orderService.getById(id)
