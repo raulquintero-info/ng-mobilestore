@@ -1,7 +1,7 @@
 <div class="pt-3 pb-3 ps-3 pe-3 "  style="border:1px solid #c0bfbf; background-color: #D4C19C;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
   <div class="ps-2" style="background-color: {{order.orderstatus.bgColor}}; border: 1px solid {{order.orderstatus.dotColor}} ">
     {{order.orderstatus.name | titlecase}}<span class="procesing-status"
-      style="color: {{order.orderstatus.dotColor}}">●</span>
+      style="color: {{order.orderstatus.dotColor}}">● </span>
   </div>
   <hr>
   <div *ngIf="!order.pickup" class="ms-2">Entrega en domicilio<br>

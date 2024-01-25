@@ -14,9 +14,7 @@ export class PurchaseItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.product = this.item.product
     console.log('item', this.item);
-    console.log('product', this.product);
 
 
   }

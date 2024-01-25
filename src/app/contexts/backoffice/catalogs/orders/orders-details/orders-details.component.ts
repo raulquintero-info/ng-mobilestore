@@ -37,7 +37,8 @@ export class OrdersDetailsComponent implements OnInit{
     .subscribe({
       next: (response) => {
         console.log('orders: ', response);
-        this.order = response;
+        // this.order = response;
+        this.getOrderById(this.order.id);
         const swalWithBootstrapButtons = swal.mixin({
           customClass: {
             confirmButton: "btn btn-success",
